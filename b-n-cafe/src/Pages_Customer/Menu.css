@@ -1,0 +1,282 @@
+* {
+    box-sizing: border-box;
+    content: width=device-width, initial-scale=1.0;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    /* padding: 150px; */
+}
+
+.col-0 {width: 0%;}
+.col-0-5 {width: 8.33%;}
+.col-1 {width: 16.66%;}
+.col-1-5 {width: 25%;}
+.col-2 {width: 33.33%;}
+.col-2-5 {width: 41.66%;}
+.col-3 {width: 50%;}
+.col-3-5 {width: 64%;}
+.col-4 {width: 66.66%;}
+.col-4-5 {width: 75%;}
+.col-5 {width: 83.33%;}
+.col-5-5 {width: 91.66%;}
+.col-6 {width: 100%;}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding-top: 50px;
+    /* width: 150px; */
+}
+
+.menu-title {
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 10px;
+    color:rgb(0, 83, 0);
+    font-size: 80px;
+
+    /* 2. Set the border */
+    border-style: hidden;
+    border-width: 100px; /* 20px 20px 20px 20px: top, right, bottom, left */
+  /* border-radius: 25px; Makes the border rounded */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+    /* max-width: 100%; */
+    /* width: 150px; */
+}
+
+.item-container { /* Applied to each menu item */
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 3px;
+
+    max-width: 1200px;
+    width: 100%;
+    /* column-width: 0px; */
+    /* margin: 0 auto; */
+    /* text-decoration-line: line-through; */ /* A way to decorate text if wanted */
+
+    color: black;
+    background:rgba(0, 128, 0, 0.3); /* Green w/ 0.3 opacity */
+    
+    /* 1. Set the margins! */
+    margin-top: 25px;
+    margin-bottom: 100px;
+    margin-right: 25px;
+    margin-left: 25px;
+
+    /* 2. Set the border */
+    border-style: solid;
+    border-width: 5px; /* 20px 20px 20px 20px: top, right, bottom, left */
+    /* border-radius: 25px; Makes the border rounded */
+
+    /* 3. This is padding inside of the border */
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.menu-items {
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.customize-container { /* Applied to each menu item */
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 3px;
+
+    max-width: 1200px;
+    width: 100%;
+    /* column-width: 0px; */
+    margin: 0 auto;
+    /* text-decoration-line: line-through; */ /* A way to decorate text if wanted */
+
+    color: black;
+    /* background:rgba(0, 128, 0, 0.3); Green w/ 0.3 opacity */
+    
+    /* 1. Set the margins! */
+    margin-top: 10px;
+    margin-bottom: 100px;
+    margin-right: 15px;
+    margin-left: 15px;
+
+    /* 2. Set the border */
+    /* border-style: solid;
+    border-width: 5px; 20px 20px 20px 20px: top, right, bottom, left */
+    /* border-radius: 25px; Makes the border rounded */
+
+    /* 3. This is padding inside of the border */
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+
+.item-name {
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 5px;
+    color:rgb(0, 83, 0);
+    font-size: 35px;
+
+    /* 2. Set the border */
+    /* border-style: hidden;
+    border-width: 100px; 20px 20px 20px 20px: top, right, bottom, left */
+  /* border-radius: 25px; Makes the border rounded */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.item-size-title {
+    /* column-span: 1; */
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 5px;
+    color:rgb(0, 83, 0);
+    padding: 20px 150px 20px 150px;
+    /* font-size: 80px; */
+
+    /* 2. Set the border */
+    /* border-style: hidden;
+    border-width: 100px; 20px 20px 20px 20px: top, right, bottom, left */
+  /* border-radius: 25px; Makes the border rounded */
+    /* padding-top: 50px;
+    padding-bottom: 100px; */
+}
+
+.item-size-container { /* Applied to each menu item */
+    /* column-count: 3; */
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 3px;
+
+    max-width: 1200px;
+    width: 100%;
+    /* column-width: 0px; */
+    margin: 0 auto;
+    /* text-decoration-line: line-through; */ /* A way to decorate text if wanted */
+
+    color: black;
+    /* background:rgba(0, 128, 0, 0.3); Green w/ 0.3 opacity */
+    
+    /* 1. Set the margins! */
+    /* margin-top: 25px;
+    margin-bottom: 100px;
+    margin-right: 25px;
+    margin-left: 25px; */
+
+    /* 2. Set the border */
+    /* border-style: solid; */
+    /* border-width: 5px; 20px 20px 20px 20px: top, right, bottom, left */
+    /* border-radius: 25px; Makes the border rounded */
+
+    /* 3. This is padding inside of the border */
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+}
+
+.order-item-name {
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 5px;
+    color:rgb(0, 83, 0);
+    font-size: 35px;
+
+    /* 2. Set the border */
+    /* border-style: hidden;
+    border-width: 100px; 20px 20px 20px 20px: top, right, bottom, left */
+  /* border-radius: 25px; Makes the border rounded */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 150px;
+}
+
+.order-customize-name {
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 5px;
+    color:rgb(0, 83, 0);
+    font-size: 20px;
+
+    /* 2. Set the border */
+    /* border-style: hidden;
+    border-width: 100px; 20px 20px 20px 20px: top, right, bottom, left */
+  /* border-radius: 25px; Makes the border rounded */
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+    padding-left: 485px;
+}
+
+.order-totals {
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 5px;
+    color:rgb(0, 83, 0);
+    font-size: 20px;
+
+    /* 2. Set the border */
+    /* border-style: hidden;
+    border-width: 100px; 20px 20px 20px 20px: top, right, bottom, left */
+  /* border-radius: 25px; Makes the border rounded */
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
+    padding-left: 180px;
+    padding-right: 1125px;
+}
+
+.order-big-total {
+    text-align: center;
+    text-transform: uppercase; /* lowercase, capitalize */
+    word-spacing: 5px;
+    color:rgb(0, 83, 0);
+    font-size: 35px;
+
+    /* 2. Set the border */
+    /* border-style: hidden;
+    border-width: 100px; 20px 20px 20px 20px: top, right, bottom, left */
+  /* border-radius: 25px; Makes the border rounded */
+    padding-top: 20px; 
+    padding-bottom: 20px;
+    padding-left: 180px;
+    padding-right: 1125px;
+}
+
+.end-text {
+    text-align: justify;
+    /* text-transform: uppercase; lowercase, capitalize */
+    word-spacing: 5px;
+    color:rgb(0, 83, 0);
+    font-size: 35px;
+
+    /* 2. Set the border */
+    /* border-style: hidden;
+    border-width: 100px; 20px 20px 20px 20px: top, right, bottom, left */
+  /* border-radius: 25px; Makes the border rounded */
+    padding-top: 20px;
+    padding-bottom: 200px;
+    padding-left: 450px;
+    padding-right: 450px;
+}
