@@ -34,6 +34,7 @@ export default function App() {
                     <Route path="Manager_Menu" element={<ManagerMenu />} />
                     <Route path="Sales_history" element={<SalesHistory />} />
                     <Route path="Staff" element={<Staff />} />
+                    <Route path="Staff" element={<Staff />} />
                 </Route>
             </Routes>
         </Router>

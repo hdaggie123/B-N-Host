@@ -1,11 +1,13 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 // import BottomNav from './Pages/bottomNav';
 
 const Layout = () => {
     return (
         <>
         <Navbar />
+
             <nav>
                 <ul>
                     <li>
@@ -43,8 +45,8 @@ const Layout = () => {
                     </li>
                 </ul>
             </nav>
-
             <Outlet />
+            <Footer />
         </>
     )
 };

@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
     content: width=device-width, initial-scale=1.0;
+    font-family: 'Nunito', sans-serif;
+    
+
 }
 
 .row::after {
@@ -43,6 +46,7 @@ img {
     word-spacing: 10px;
     color:rgb(0, 83, 0);
     font-size: 80px;
+    background-color:rgb(206, 204, 204);
 
     /* 2. Set the border */
     border-style: hidden;
@@ -79,7 +83,7 @@ img {
     margin-top: 25px;
     margin-bottom: 100px;
     margin-right: 25px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
 
     /* 2. Set the border */
     border-style: solid;
@@ -91,6 +95,9 @@ img {
     padding-right: 25px;
     padding-bottom: 25px;
     padding-left: 25px;
+
+    /* adding rounded edges */
+    border-radius: 15px;
 }
 
 .menu-items {

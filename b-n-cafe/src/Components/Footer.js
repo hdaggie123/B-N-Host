@@ -28,28 +28,12 @@ function Navbar() {
                 
                 {/* This is where the navbar options are defined */}
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                    <li className='nav-item'>
-                    <button className="Nav-button"><Link to='/' className='nav-links' onClick={closeMenu}>
-                            Menu
-                        </Link> </button>
-                    </li>
 
                     <li className='nav-item'>
+                        {/* add an icon here */}
                     <button className="find-us-button"><Link to='/location' className='nav-links' onClick={closeMenu}>
-                            Find Us
+                            Translate
                         </Link></button>
-                    </li>
-
-                    <li className='nav-item'>
-                    <button className="Nav-button"><Link to='/account' className='nav-links' onClick={closeMenu}>
-                            My Account
-                        </Link></button>
-                    </li>
-
-                    <li className='nav-item'>
-                    <button className="Nav-button"><Link to='/menu' className='nav-links' onClick={closeMenu}>
-                            My Order
-                            </Link></button>
                     </li>
 
                 </ul>
