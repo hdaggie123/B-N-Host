@@ -11,7 +11,7 @@ const Layout = () => {
                     <li>
                         <Link to="/">Menu</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/SeasonMenu">SeasonMenu</Link>
                     </li>
                     <li>
@@ -40,7 +40,7 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/Staff">Staff</Link>
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
 
