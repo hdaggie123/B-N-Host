@@ -1,4 +1,5 @@
 import react from 'react';
+import './Register.css';
 
 //here I am creating a basic registration page
 
@@ -7,7 +8,7 @@ function Register() {
     
 
     return (
-        <div>
+        < div className='register'>
             <h1>Register</h1>
             <form>
                 <label>

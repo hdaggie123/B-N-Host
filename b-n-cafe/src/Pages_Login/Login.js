@@ -36,18 +36,18 @@ export default function Login() {
             <div class="header right">
                 <h1>Welcome to Barnes and Noble Cafe!</h1>
             </div>
-            <div className='logo box left'>
+            <div className='logo left'>
                 <img src={require("../Pictures/Starbucks_logo.png")} alt="Starbucks" width="100%" height="100%"/>
             </div>
             <div>
                     <form className='login_box'>
                         <h2>Sign In</h2>
                     <div>
-                    <label for="username">Username</label>
+                    <label for="username">Username:  </label>
                     <input type="text" id="username" name="username" />
                     </div>
                     <div>
-                    <label for="password">Password</label>
+                    <label for="password">Password:   </label>
                     <input type="password" id="password" name="password" />
                     </div>
                     <button className='star-sign'>Sign In!</button>
