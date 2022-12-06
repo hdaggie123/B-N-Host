@@ -1,9 +1,8 @@
+
 * {
     box-sizing: border-box;
     content: width=device-width, initial-scale=1.0;
     font-family: 'Nunito', sans-serif;
-    
-
 }
 
 .row::after {
@@ -23,7 +22,7 @@
 .col-1-5 {width: 25%;}
 .col-2 {width: 33.33%;}
 .col-2-5 {width: 41.66%;}
-.col-3 {width: 50%;}
+/* .col-3 {width: 50%;} */
 .col-3-5 {width: 64%;}
 .col-4 {width: 66.66%;}
 .col-4-5 {width: 75%;}
@@ -39,6 +38,12 @@ img {
     padding-top: 50px;
     /* width: 150px; */
 }
+/* Solid border */
+hr.solid {
+    border-top: 4px solid #bbb ;
+    width: 600px;
+    margin: auto;
+  }
 
 .menu-title {
     text-align: center;
@@ -46,7 +51,7 @@ img {
     word-spacing: 10px;
     color:rgb(0, 83, 0);
     font-size: 80px;
-    background-color:rgb(206, 204, 204);
+    /* background-color:rgb(206, 204, 204); */
 
     /* 2. Set the border */
     border-style: hidden;
@@ -55,6 +60,8 @@ img {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
+
 
 .img {
     display: block;
@@ -106,6 +113,7 @@ img {
     width: 100%;
     margin: 0 auto;
     display: flex;
+    justify-content: center;
 }
 
 .customize-container { /* Applied to each menu item */
@@ -286,4 +294,27 @@ img {
     padding-bottom: 200px;
     padding-left: 450px;
     padding-right: 450px;
+}
+
+.menu-button{
+  background-color: #006241;
+  border: none;
+  color: white;
+  width: 270px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /* margin: 4px; */
+  border-radius: 40px;
+}
+.menu-button a{
+  text-decoration: none;
+  color:#fff;
+  font-size: 20px;
+  letter-spacing:1px;
+  font-weight: 400;
+  padding:10px 20px;
+  position:relative;
 }

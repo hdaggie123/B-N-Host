@@ -7,7 +7,6 @@ const Layout = () => {
     return (
         <>
         <Navbar />
-
             <nav>
                 <ul>
                     <li>
@@ -42,6 +41,9 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/Staff">Staff</Link>
+                    </li>
+                    <li>
+                        <Link to="/Map">Map</Link>
                     </li>
                 </ul>
             </nav>

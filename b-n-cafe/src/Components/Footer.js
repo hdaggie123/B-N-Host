@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './Navbar.css';
+import LanguageIcon from '@mui/icons-material/Language';
 
 function Navbar() {
     const handleClick = () => setClick(!click);
@@ -29,11 +30,13 @@ function Navbar() {
                 {/* This is where the navbar options are defined */}
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
 
-                    <li className='nav-item'>
+                    <li className='footer-item'>
                         {/* add an icon here */}
                     <button className="find-us-button"><Link to='/location' className='nav-links' onClick={closeMenu}>
                             Translate
-                        </Link></button>
+                        </Link>
+                        <i> <LanguageIcon /> </i>
+                        </button>
                     </li>
 
                 </ul>

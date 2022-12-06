@@ -10,6 +10,7 @@ import End from './Pages_Customer/End';
 import Layout from './Main/Layout';
 
 import Login from './Main/Login';
+import Map from './Components/Map';
 
 import Accounts from './Pages_Staff/Accounts';
 import Inventory from './Pages_Staff/Inventory';
@@ -35,6 +36,7 @@ export default function App() {
                     <Route path="Sales_history" element={<SalesHistory />} />
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Staff" element={<Staff />} />
+                    <Route path="Map" element={<Map />} />
                 </Route>
             </Routes>
         </Router>
