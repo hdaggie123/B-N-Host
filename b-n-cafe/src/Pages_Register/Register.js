@@ -1,27 +1,34 @@
 import react from 'react';
 import './Register.css';
-
+import {useState} from 'react';
+import axios from 'axios';
 //here I am creating a basic registration page
 
 function Register() {
     //Here I am going to add the database access so data gets stored
-    
+    const [usernameReg, setUsernameReg] = useState("");
+    const [passwordReg, setPasswordReg] = useState("");
+
+    const register = () => {
+        axios.post("http://localhost:3001/register", {
+            username: usernameReg,
+            password: passwordReg,
+        }).then((response) => {
+            console.log(response);
+        });
+    }
 
     return (
         < div className='register'>
-            <h1>Register</h1>
+            <h1 className='header'>Register</h1>
             <form>
                 <label>
                     Username:
-                    <input type="text" name="username" />
+                    <input type="text" onChange={(e) => setUsernameReg(e.target.value)} name="username" />
                 </label>
                 <label>
                     Password:
-                    <input type="password" name="password" />
-                </label>
-                <label>
-                    Confirm Password:
-                    <input type="password" name="password" />
+                    <input type="password" onChange={(e) => setPasswordReg(e.target.value)} name="password" />
                 </label>
                 <label>
                     Role:
@@ -31,7 +38,9 @@ function Register() {
                         <option value="staff">Staff</option>
                     </select>
                 </label>
-                <input type="submit" value="Submit" />
+                <div>
+                <button className="button" onClick={register}>Register</button>
+                </div>
             </form>
         </div>
     )

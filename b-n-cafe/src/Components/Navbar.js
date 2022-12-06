@@ -51,6 +51,11 @@ function Navbar() {
                             My Account
                         </Link>
                     </li>
+                    <li className='nav-item'>
+                        <Link to='/login' className='nav-links' onClick={closeMenu}>
+                            Login
+                        </Link>
+                    </li>
                 </ul>
 
                 {/* {button && <Button buttonStyle='btn--outline'>Account</Button>} */}
