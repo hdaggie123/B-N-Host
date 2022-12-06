@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './Navbar.css';
+import './Map.js';
+import Search from './Search.js';
+import './Search.css';
 
 function Navbar() {
     const handleClick = () => setClick(!click);
@@ -23,6 +26,7 @@ function Navbar() {
     window.addEventListener('resize', showButton);
     return (
     <>
+        <Search/>
         <nav className="navbar">
             <div className="navbar-c">
                 
@@ -35,11 +39,11 @@ function Navbar() {
                     </li>
 
                     <li className='nav-item'>
-                    <button className="find-us-button"><Link to='/location' className='nav-links' onClick={closeMenu}>
+                    <button className="find-us-button"><Link to='/Map' className='nav-links' onClick={closeMenu}>
                             Find Us
                         </Link></button>
                     </li>
-
+                    {/* link a button to the maps page */}
                     <li className='nav-item'>
                     <button className="Nav-button"><Link to='/account' className='nav-links' onClick={closeMenu}>
                             My Account
@@ -51,7 +55,6 @@ function Navbar() {
                             My Order
                             </Link></button>
                     </li>
-
                 </ul>
 
                 {/* {button && <Button buttonStyle='btn--outline'>Account</Button>} */}
@@ -61,4 +64,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default Navbar;
