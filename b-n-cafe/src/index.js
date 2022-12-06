@@ -9,9 +9,10 @@ import Order from './Pages_Customer/Order';
 import End from './Pages_Customer/End';
 import Layout from './Main/Layout';
 
-import Login from './Main/Login';
+import Login from './Pages_Login/Login';
+import Register from './Pages_Register/Register';
 
-import Accounts from './Pages_Staff/Accounts';
+import Accounts from './Pages_Staff/Accounts';  
 import Inventory from './Pages_Staff/Inventory';
 import ManagerMenu from './Pages_Staff/ManagerMenu';
 import SalesHistory from './Pages_Staff/SalesHistory';
@@ -29,6 +30,7 @@ export default function App() {
                     <Route path="End" element={<End />} />
                     
                     <Route path="Login" element={<Login />} />
+                    <Route path="Register" element={<Register />} />
                     <Route path="Accounts" element={<Accounts />} />
                     <Route path="Inventory" element={<Inventory />} />
                     <Route path="Manager_Menu" element={<ManagerMenu />} />
