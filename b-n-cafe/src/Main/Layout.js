@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from '../Components/Navbar';
-// import BottomNav from './Pages/bottomNav';
+
 
 const Layout = () => {
     return (
@@ -8,9 +8,9 @@ const Layout = () => {
         <Navbar />
             <nav>
                 <ul>
-                    <li>
-                        <Link to="/">MenuAdd</Link>
-                    </li>
+                    {/* <li>
+                        <Link to="/">MenuList</Link>
+                    </li> */}
                     {/* <li>
                         <Link to="/SeasonMenu">SeasonMenu</Link>
                     </li>
@@ -22,11 +22,14 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/End">End</Link>
-                    </li>
-                    <li>
+                    </li>*/}
+                    {/* <li>
                         <Link to="/Login">Login</Link>
-                    </li>
+                    </li> */}
                     <li>
+                        <Link to="/Register">Register</Link>
+                    </li>
+                    {/*<li>
                         <Link to="/Accounts">Accounts</Link>
                     </li>
                     <li>
