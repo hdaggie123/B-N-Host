@@ -7,7 +7,8 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 // import Order from './Pages_Customer/Order';
 // import End from './Pages_Customer/End';
 import Layout from './Main/Layout';
-import MenuList from './Components/MenuList';
+// import MenuList from './Components/MenuList';
+import MenuAdd from './Components/MenuAdd';
 
 // import Login from './Main/Login';
 
@@ -21,7 +22,7 @@ export default function App() {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
-        fetch("/accounts")
+        fetch("/menu")
             .then((res) => res.json())
             .then((data) => setData(data.message));
     }, []);
@@ -30,7 +31,7 @@ export default function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<MenuList />} />
+                    <Route index element={<MenuAdd />} />
                     {/* <Route index element={<Menu />} /> */}
                     {/* <Route path="SeasonMenu" element={<SeasonMenu />} />
                     <Route path="Drink" element={<Drink />} />

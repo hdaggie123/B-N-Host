@@ -17,7 +17,6 @@ export default class MenuList extends React.Component {
     render() {
         return (
             <div>
-                Hello
                 <ul>
                 {
                     this.state.items
@@ -25,7 +24,6 @@ export default class MenuList extends React.Component {
                             <li key={items.menu_id}>{items.menu_item}</li>
                         )
                 }
-                console.log(items[0])
                 </ul>
             </div>
             // <ul>
