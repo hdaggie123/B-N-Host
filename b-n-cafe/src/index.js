@@ -9,7 +9,7 @@ import Order from './Pages_Customer/Order';
 import End from './Pages_Customer/End';
 import Layout from './Main/Layout';
 
-import Login from './Main/Login';
+import Login from './Pages_Login/Login';
 import Map from './Components/Map';
 
 import Accounts from './Pages_Staff/Accounts';
@@ -17,6 +17,8 @@ import Inventory from './Pages_Staff/Inventory';
 import ManagerMenu from './Pages_Staff/ManagerMenu';
 import SalesHistory from './Pages_Staff/SalesHistory';
 import Staff from './Pages_Staff/Staff';
+import ManagerNavBar from './Pages_Staff/ManagerNavBar';
+
 
 export default function App() {
     return (
@@ -28,15 +30,15 @@ export default function App() {
                     <Route path="Drink" element={<Drink />} />
                     <Route path="Order" element={<Order />} />
                     <Route path="End" element={<End />} />
-                    
                     <Route path="Login" element={<Login />} />
                     <Route path="Accounts" element={<Accounts />} />
                     <Route path="Inventory" element={<Inventory />} />
                     <Route path="Manager_Menu" element={<ManagerMenu />} />
-                    <Route path="Sales_history" element={<SalesHistory />} />
+                    <Route path="SalesHistory" element={<SalesHistory />} />
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Map" element={<Map />} />
+                    <Route path="ManagerNavBar" element={<ManagerNavBar/>} />
                 </Route>
             </Routes>
         </Router>

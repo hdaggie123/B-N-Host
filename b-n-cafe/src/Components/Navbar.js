@@ -39,7 +39,7 @@ function Navbar() {
                     </li>
 
                     <li className='nav-item'>
-                    <button className="find-us-button"><Link to='/location' className='nav-links' onClick={closeMenu}>
+                    <button className="find-us-button"><Link to='/Map' className='nav-links' onClick={closeMenu}>
                             Find Us
                         </Link>
                         <i> <LocationOnIcon /></i>
@@ -48,14 +48,16 @@ function Navbar() {
 
                     <li className='nav-item'><Search /> </li>
                     <li className='nav-item'>
-                    <button className="Nav-button"><Link to='/account' className='nav-links' onClick={closeMenu}>
-                            My Account
+                    <button className="Nav-button"><Link to='/Login' className='nav-links' onClick={closeMenu}>
+                            Login
                         </Link>
                         <i> < ManageAccountsIcon/> </i></button>
                     </li>
 
+                    
+
                     <li className='nav-item'>
-                    <button className="Nav-button"><Link to='/menu' className='nav-links' onClick={closeMenu}>
+                    <button className="Nav-button"><Link to='/Order' className='nav-links' onClick={closeMenu}>
                             My Order
                             </Link>
                             <i> <ShoppingBasketIcon /> </i>
