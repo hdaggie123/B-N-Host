@@ -6,6 +6,10 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+/**
+ * 
+ * @returns a nav bar with the options to navigate to different pages
+ */
 function Navbar() {
     const handleClick = () => setClick(!click);
     const closeMenu = () => setClick(false);

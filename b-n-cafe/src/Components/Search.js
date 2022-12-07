@@ -2,7 +2,10 @@ import React, {Components} from 'react';
 import "./Search.css";
 import SearchIcon from "@material-ui/icons/Search";
 
-
+/**
+ * 
+ * @returns a search function that allows the user to search for a menu item
+ */
 export default function Search() {
     return (
         <div>

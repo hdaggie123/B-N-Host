@@ -4,6 +4,9 @@ const app = express()
 const db = require('./queries')
 const port = 3001
 
+/**
+ * This is the server file for the B-N-Cafe project. It is responsible for to connect to the database and front end
+ */
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -19,6 +22,9 @@ app.use(
     })
 )
 
+/**
+ * This is the server file for the B-N-Cafe project. It is responsible for to connect to the database and front end
+ */
 app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
 })

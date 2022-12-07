@@ -11,7 +11,6 @@ import MenuList from './Components/MenuList';
 // import MenuAdd from './Components/MenuAdd';
 
 import Login from './Pages_Login/Login';
-<<<<<<< HEAD
 import Map from './Components/Map';
 
 import Accounts from './Pages_Staff/Accounts';
@@ -21,16 +20,10 @@ import SalesHistory from './Pages_Staff/SalesHistory';
 import Staff from './Pages_Staff/Staff';
 import ManagerNavBar from './Pages_Staff/ManagerNavBar';
 
-=======
-import Register from './Pages_Register/Register';
-
-// import Accounts from './Pages_Staff/Accounts';  
-// import Inventory from './Pages_Staff/Inventory';
-// import ManagerMenu from './Pages_Staff/ManagerMenu';
-// import SalesHistory from './Pages_Staff/SalesHistory';
-// import Staff from './Pages_Staff/Staff';
->>>>>>> e625c59805bda03d9c3063575fee91bf3d2cc61e
-
+/**
+ * react component that renders the entire app
+ * @returns a react component that renders the entire app
+ */
 export default function App() {
     const [data, setData] = React.useState(null);
 
@@ -48,28 +41,18 @@ export default function App() {
                     {/* <Route path="SeasonMenu" element={<SeasonMenu />} />
                     <Route path="Drink" element={<Drink />} />
                     <Route path="Order" element={<Order />} />
-<<<<<<< HEAD
-                    <Route path="End" element={<End />} />
-=======
                     <Route path="End" element={<End />} />*/}
                     
->>>>>>> e625c59805bda03d9c3063575fee91bf3d2cc61e
                     <Route path="Login" element={<Login />} />
                     <Route path="Register" element={<Register />} />
-                    {/*<Route path="Accounts" element={<Accounts />} />
+                    <Route path="Accounts" element={<Accounts />} />
                     <Route path="Inventory" element={<Inventory />} />
                     <Route path="Manager_Menu" element={<ManagerMenu />} />
-<<<<<<< HEAD
                     <Route path="SalesHistory" element={<SalesHistory />} />
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Map" element={<Map />} />
                     <Route path="ManagerNavBar" element={<ManagerNavBar/>} />
-=======
-                    <Route path="Sales_history" element={<SalesHistory />} />
-                    <Route path="Staff" element={<Staff />} />  */}
-
->>>>>>> e625c59805bda03d9c3063575fee91bf3d2cc61e
                 </Route>
             </Routes>
         </Router>

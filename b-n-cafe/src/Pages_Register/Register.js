@@ -4,6 +4,10 @@ import {useState} from 'react';
 import axios from 'axios';
 //here I am creating a basic registration page
 
+/**
+ * registration page
+ * @returns creates a registration page where users can register for an account
+ */
 function Register() {
     //Here I am going to add the database access so data gets stored
     const [usernameReg, setUsernameReg] = useState("");

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: b-n-cafe/src/Pages_Customer/Order.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: b-n-cafe/src/Pages_Customer/Order.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import '../Main/App.css';
+import Item from './Item';
+import './Menu.css';
+import logoImg from '../Pictures/barnes&amp;nobleLogo.jpg';
+import {Link} from 'react-router-dom';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+
+
+/**
+ * 
+ * @returns the order page where users can place an order
+ */
+function Order () {
+
+    return (
+        &lt;>
+        {/* #1 - LOGO HERE */}
+        &lt;div className="warp-myorder">
+            &lt;div class="row">
+                &lt;div class="col-6">&lt;img src={logoImg} alt=""/>&lt;/div>
+            &lt;/div>
+
+            {/* #2 - MENU ITEM NAME HERE */}
+            &lt;hr class="solid" >&lt;/hr>
+            &lt;div class="row">
+                &lt;div class="col-6">
+                    &lt;div className="menu-title">
+                        MY ORDER
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+            &lt;hr class="solid" >&lt;/hr>
+
+            {/* &lt;div className="item-picture">
+                    PEPPERMINT MOCHA
+            &lt;/div> */}
+
+            {/* #3 - SIZE &amp; CUSTOMIZE HERE */}
+            &lt;div className="menu-items">
+                &lt;div class="row">
+                    &lt;div class="col-6">&lt;h3 className="order-item-picture">Picture&lt;/h3>&lt;/div>
+                &lt;/div>
+            &lt;/div>
+            &lt;div className="menu-items">
+                &lt;div class="row">
+                    &lt;div class="col-2">&lt;h3 className="order-item-name">Peppermint Mocha&lt;/h3>&lt;/div>
+                    &lt;div class="col-2">&lt;h3 className="order-item-name">$3.65&lt;/h3>&lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+            &lt;div className="menu-items">
+                &lt;div class="row">
+                    &lt;div class="col-2">&lt;h3 className="order-customize-name">Tall 12 fl oz&lt;/h3>&lt;/div>
+                    &lt;div class="col-2">&lt;h3 className="order-customize-name">+$0.80&lt;/h3>&lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+            &lt;div className="menu-items">
+                &lt;div class="row">
+                    {/* &lt;div class="col-2">&lt;h3 className="order-customize-name">Hot&lt;/h3>&lt;/div> */}
+                    &lt;div class="col-2">&lt;h3 className="order-totals">Subtotal&lt;/h3>&lt;/div>
+                    &lt;div class="col-2">&lt;h3 className="order-totals">$3.65&lt;/h3>&lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+            &lt;div className="menu-items">
+                &lt;div class="row">
+                    {/* &lt;div class="col-2">&lt;h3 className="order-customize-name">Hot&lt;/h3>&lt;/div> */}
+                    &lt;div class="col-2">&lt;h3 className="order-totals">Tax&lt;/h3>&lt;/div>
+                    &lt;div class="col-2">&lt;h3 className="order-totals">$0.80&lt;/h3>&lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+            &lt;div className="menu-items">
+                &lt;div class="row">
+                    {/* &lt;div class="col-2">&lt;h3 className="order-customize-name">Hot&lt;/h3>&lt;/div> */}
+                    &lt;div class="col-2">&lt;h3 className="order-big-total">Total&lt;/h3>&lt;/div>
+                    &lt;div class="col-2">&lt;h3 className="order-big-total">$3.65&lt;/h3>&lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+            &lt;div class="row">
+                &lt;div className="menu-items">
+                    {/* added a button here  */}
+                    {/* &lt;Item name="Checkout" price="$2.00"/> */}
+                    &lt;button className="menu-button">&lt;Link to='/' className='nav-links'>
+                        Checkout
+                        &lt;i>&lt;ShoppingCartCheckoutIcon />&lt;/i>&lt;/Link>
+                    &lt;/button>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+
+        &lt;/>
+    )
+}
+
+export default Order;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Accounts">Accounts</a></li><li><a href="global.html#Drink">Drink</a></li><li><a href="global.html#End">End</a></li><li><a href="global.html#Item">Item</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#ManagerNavBar">ManagerNavBar</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Order">Order</a></li><li><a href="global.html#Register">Register</a></li><li><a href="global.html#SalesHistory">SalesHistory</a></li><li><a href="global.html#SeasonMenu">SeasonMenu</a></li><li><a href="global.html#createAccount">createAccount</a></li><li><a href="global.html#createInventoryItem">createInventoryItem</a></li><li><a href="global.html#createMenuItem">createMenuItem</a></li><li><a href="global.html#createOpenOrder">createOpenOrder</a></li><li><a href="global.html#createSalesHistory">createSalesHistory</a></li><li><a href="global.html#createStaff">createStaff</a></li><li><a href="global.html#data">data</a></li><li><a href="global.html#deleteAccount">deleteAccount</a></li><li><a href="global.html#deleteInventoryItem">deleteInventoryItem</a></li><li><a href="global.html#deleteMenuItem">deleteMenuItem</a></li><li><a href="global.html#deleteOpenOrder">deleteOpenOrder</a></li><li><a href="global.html#deleteSalesHistory">deleteSalesHistory</a></li><li><a href="global.html#deleteStaff">deleteStaff</a></li><li><a href="global.html#getAccountById">getAccountById</a></li><li><a href="global.html#getAccounts">getAccounts</a></li><li><a href="global.html#getInventoryItemById">getInventoryItemById</a></li><li><a href="global.html#getInventoryItems">getInventoryItems</a></li><li><a href="global.html#getMenuItemById">getMenuItemById</a></li><li><a href="global.html#getMenuItems">getMenuItems</a></li><li><a href="global.html#getOpenOrders">getOpenOrders</a></li><li><a href="global.html#getOpenOrdersById">getOpenOrdersById</a></li><li><a href="global.html#getSalesHistory">getSalesHistory</a></li><li><a href="global.html#getSalesHistoryById">getSalesHistoryById</a></li><li><a href="global.html#getStaff">getStaff</a></li><li><a href="global.html#itemValues">itemValues</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#translate">translate</a></li><li><a href="global.html#updateAccount">updateAccount</a></li><li><a href="global.html#updateInventoryItem">updateInventoryItem</a></li><li><a href="global.html#updateMenuItem">updateMenuItem</a></li><li><a href="global.html#updateOpenOrders">updateOpenOrders</a></li><li><a href="global.html#updateSalesHistory">updateSalesHistory</a></li><li><a href="global.html#updateStaff">updateStaff</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Dec 06 2022 23:32:18 GMT-0600 (Central Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

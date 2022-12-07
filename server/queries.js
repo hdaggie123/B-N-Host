@@ -9,6 +9,12 @@ const pool = new Pool({
 })
 
 // GET
+
+/**
+ * gets accounts
+ * @param  request 
+ * @param  response 
+ */
 const getAccounts = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM accounts ORDER BY id', (error, results) => {
@@ -19,6 +25,11 @@ const getAccounts = (request, response) => {
     })
 }
 
+/**
+ * gets menu items
+ * @param  request 
+ * @param  response 
+ */
 const getMenuItems = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM menu ORDER BY menu_id', (error, results) => {
@@ -29,6 +40,12 @@ const getMenuItems = (request, response) => {
     })
 }
 
+
+/**
+ * get Iveentory items
+ * @param  request 
+ * @param  response 
+ */
 const getInventoryItems = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM inventory ORDER BY inventory_id', (error, results) => {
@@ -39,6 +56,11 @@ const getInventoryItems = (request, response) => {
     })
 }
 
+/**
+ * get Open Orders
+ * @param  request 
+ * @param  response 
+ */
 const getOpenOrders = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM open_orders ORDER BY order_id', (error, results) => {
@@ -49,6 +71,11 @@ const getOpenOrders = (request, response) => {
     })
 }
 
+/**
+ * get Sales History
+ * @param  request 
+ * @param  response 
+ */
 const getSalesHistory = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM sales_history ORDER BY order_id', (error, results) => {
@@ -59,6 +86,11 @@ const getSalesHistory = (request, response) => {
     })
 }
 
+/**
+ * get Staff
+ * @param  request 
+ * @param  response 
+ */
 const getStaff = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM staff ORDER BY staff_id', (error, results) => {
@@ -70,6 +102,11 @@ const getStaff = (request, response) => {
 }
 
 // GET BY ID
+/**
+ * get accounts by id
+ * @param  request 
+ * @param  response 
+ */
 const getAccountById = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM accounts WHERE id = $1', [id], (error, results) => {
@@ -80,6 +117,11 @@ const getAccountById = (request, response) => {
     })
 }
 
+/**
+ * get menu items by id
+ * @param  request 
+ * @param  response 
+ */
 const getMenuItemById = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM menu WHERE menu_id = $1', [id], (error, results) => {
@@ -90,6 +132,11 @@ const getMenuItemById = (request, response) => {
     })
 }
 
+/**
+ * get inventory items by id
+ * @param  request 
+ * @param  response 
+ */
 const getInventoryItemById = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM inventory WHERE inventory_id = $1', [id], (error, results) => {
@@ -100,6 +147,11 @@ const getInventoryItemById = (request, response) => {
     })
 }
 
+/**
+ * get open orders by id
+ * @param  request 
+ * @param  response 
+ */
 const getOpenOrdersById = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM open_orders WHERE order_id = $1', [id], (error, results) => {
@@ -110,6 +162,11 @@ const getOpenOrdersById = (request, response) => {
     })
 }
 
+/**
+ * get sales history by id
+ * @param  request 
+ * @param  response 
+ */
 const getSalesHistoryById = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM sales_history WHERE order_id = $1', [id], (error, results) => {
@@ -132,6 +189,11 @@ const getStaffById = (request, response) => {
 
 // POST
 
+/**
+ * create account
+ * @param  request 
+ * @param  response 
+ */
 const createAccount = (request, response) => {
     const {username, password, classification } = request.body
     const id = NULL
@@ -144,6 +206,11 @@ const createAccount = (request, response) => {
     })
 }
 
+/**
+ * create inventory item
+ * @param  request 
+ * @param  response 
+ */
 const createInventoryItem = (request, response) => {
     const { inventory_id, inventory_item, inventory_amount, minimum_requirement } = request.body
 
@@ -155,6 +222,12 @@ const createInventoryItem = (request, response) => {
     })
 }
 
+
+/**
+ * create menu item
+ * @param  request 
+ * @param  response 
+ */
 const createMenuItem = (request, response) => {
     const { menu_id, inventory_id, menu_item, item_size, item_price, customizations } = request.body
 
@@ -166,6 +239,12 @@ const createMenuItem = (request, response) => {
     })
 }
 
+
+/**
+ * create open order
+ * @param  request 
+ * @param  response 
+ */
 const createOpenOrder = (request, response) => {
     const { order_id, inventory_id, menu_item, item_size, customizations, item_price, purchase_date } = request.body
 
@@ -177,6 +256,11 @@ const createOpenOrder = (request, response) => {
     })
 }
 
+/**
+ * create sales history
+ * @param  request 
+ * @param  response 
+ */
 const createSalesHistory = (request, response) => {
     const { order_id, inventory_id, menu_item, item_size, customizations, item_price, purchase_date } = request.body
 
@@ -188,6 +272,11 @@ const createSalesHistory = (request, response) => {
     })
 }
 
+/**
+ * create staff
+ * @param  request 
+ * @param  response 
+ */
 const createStaff = (request, response) => {
     const { staff_id, staff_name, staff_position } = request.body
 
@@ -200,6 +289,12 @@ const createStaff = (request, response) => {
 }
 
 // PUT
+
+/**
+ * update account
+ * @param  request 
+ * @param  response 
+ */
 const updateAccount = (request, response) => {
     const id = parseInt(request.params.id)
     const { username, password, classification } = request.body
@@ -216,6 +311,11 @@ const updateAccount = (request, response) => {
     )
 }
 
+/**
+ * update inventory item
+ * @param  request 
+ * @param  response 
+ */
 const updateInventoryItem = (request, response) => {
     const inventory_id = parseInt(request.params.id)
     const { inventory_item, inventory_amount, minimum_requirement } = request.body
@@ -232,6 +332,12 @@ const updateInventoryItem = (request, response) => {
     )
 }
 
+
+/**
+ * update menu item
+ * @param  request 
+ * @param  response 
+ */
 const updateMenuItem = (request, response) => {
     const menu_id = parseInt(request.params.id)
     const { inventory_id, menu_item, item_size, item_price, customizations } = request.body
@@ -248,6 +354,12 @@ const updateMenuItem = (request, response) => {
     )
 }
 
+
+/**
+ * update open orders
+ * @param  request 
+ * @param  response 
+ */
 const updateOpenOrders = (request, response) => {
     const order_id = parseInt(request.params.id)
     const { inventory_id, menu_item, item_size, customizations, item_price, purchase_date } = request.body
@@ -264,6 +376,11 @@ const updateOpenOrders = (request, response) => {
     )
 }
 
+/**
+ * update sales history
+ * @param  request 
+ * @param  response 
+ */
 const updateSalesHistory = (request, response) => {
     const order_id = parseInt(request.params.id)
     const { inventory_id, menu_item, item_size, customizations, item_price, purchase_date } = request.body
@@ -280,6 +397,11 @@ const updateSalesHistory = (request, response) => {
     )
 }
 
+/**
+ * update staff
+ * @param  request 
+ * @param  response 
+ */
 const updateStaff = (request, response) => {
     const staff_id = parseInt(request.params.id)
     const { staff_name, staff_position } = request.body
@@ -297,6 +419,11 @@ const updateStaff = (request, response) => {
 }
 
 // DELETE
+/**
+ * delete account
+ * @param  request 
+ * @param  response 
+ */
 const deleteAccount = (request, response) => {
     const id = parseInt(request.params.id)
 
@@ -308,6 +435,11 @@ const deleteAccount = (request, response) => {
     })
 }
 
+/**
+ * delete inventory item
+ * @param  request 
+ * @param  response 
+ */
 const deleteInventoryItem = (request, response) => {
     const inventory_id = parseInt(request.params.id)
 
@@ -319,6 +451,11 @@ const deleteInventoryItem = (request, response) => {
     })
 }
 
+/**
+ * delete menu item
+ * @param  request 
+ * @param  response 
+ */
 const deleteMenuItem = (request, response) => {
     const menu_id = parseInt(request.params.id)
 
@@ -330,6 +467,12 @@ const deleteMenuItem = (request, response) => {
     })
 }
 
+
+/**
+ * delete open orders
+ * @param  request 
+ * @param  response 
+ */
 const deleteOpenOrder = (request, response) => {
     const order_id = parseInt(request.params.id)
 
@@ -341,6 +484,11 @@ const deleteOpenOrder = (request, response) => {
     })
 }
 
+/**
+ * delete sales history
+ * @param  request 
+ * @param  response 
+ */
 const deleteSalesHistory = (request, response) => {
     const order_id = parseInt(request.params.id)
 
@@ -352,6 +500,12 @@ const deleteSalesHistory = (request, response) => {
     })
 }
 
+
+/**
+ * delete staff
+ * @param  request 
+ * @param  response 
+ */
 const deleteStaff = (request, response) => {
     const staff_id = parseInt(request.params.id)
 

@@ -4,6 +4,14 @@ import './Menu.css';
 // import { Link } from 'react-router-dom';
 // import Button from '../Button';
 
+
+/**
+ * 
+ * @param  item
+ * @param img
+ * @param link
+ * @returns an item on the menu page
+ */
 function Item ({name, img, link}) {
     return (
         <>

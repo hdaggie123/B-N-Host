@@ -75,6 +75,10 @@ export const data = [
 ];
 
 
+/**
+ * 
+ * @returns creates an account that willl store the information of the user
+ */
 const Accounts = () => {
 const [createModalOpen, setCreateModalOpen] = useState(false);
 const [tableData, setTableData] = useState(() => data);

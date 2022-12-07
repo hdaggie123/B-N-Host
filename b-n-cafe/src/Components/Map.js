@@ -14,6 +14,10 @@ const center = {
     lng: -96.34110035745813
 };
 
+/**
+ * a map component using the google maps api
+ * @returns a map component
+ */
 function map() {
     return(
             <LoadScript

@@ -4,6 +4,10 @@ import '../Main/App.css';
 import './Menu.css';
 import logoImg from '../Pictures/barnes&nobleLogo.jpg';
 
+/**
+ * 
+ * @returns the end page after using placed an order
+ */
 const End = () => {
 
     return (

@@ -7,6 +7,10 @@ import logoImg from '../Pictures/barnes&nobleLogo.jpg';
 // import { Link } from 'react-router-dom';
 // import SeasonMenu from './SeasonMenu';
 
+/**
+ * 
+ * @returns return the menu layout
+ */
 const Menu = () => {
 
     return (

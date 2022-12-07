@@ -73,7 +73,10 @@ export const data = [
     },
   ];
   
-
+/**
+ * 
+ * @returns shows all of the staff information in a table
+ */
 const Accounts = () => {
   const [tableData, setTableData] = useState(() => data);
   const [validationErrors, setValidationErrors] = useState({});

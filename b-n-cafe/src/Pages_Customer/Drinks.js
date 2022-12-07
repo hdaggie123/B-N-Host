@@ -4,11 +4,20 @@ import Item from './Item';
 import './Menu.css';
 import logoImg from '../Pictures/barnes&nobleLogo.jpg';
 
+/**
+ * 
+ * @param  item 
+ * @returns the name of the item
+ */
 function itemValues(item) {
     const itemName = item.name;
     return itemName;
 }
 
+/**
+ * 
+ * @returns a menu page for drinks
+ */
 const Drink = () => {
     const itemName = "PEPPERMINT MOCHA";
 

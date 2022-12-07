@@ -3,6 +3,10 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 
 
+/**
+ * 
+ * @returns creates a layout for the pages
+ */
 const Layout = () => {
     return (
         <>

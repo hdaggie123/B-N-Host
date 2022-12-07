@@ -18,6 +18,9 @@ import { Delete, Edit } from '@mui/icons-material';
 // import { data, states } from './makeData';
 
 
+/**
+ * holds an array of objects that hold the inventory information
+ */
 export const data = [
 {
     inventrory: '1',

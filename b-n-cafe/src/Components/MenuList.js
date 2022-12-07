@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+/**
+ * creates a menu list component that displays the menu items using render
+ */
 export default class MenuList extends React.Component {
     state = {
         items: []

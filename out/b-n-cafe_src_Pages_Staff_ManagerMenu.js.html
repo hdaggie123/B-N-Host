@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: b-n-cafe/src/Pages_Staff/ManagerMenu.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: b-n-cafe/src/Pages_Staff/ManagerMenu.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useCallback, useMemo, useState } from 'react';
+import MaterialReactTable from 'material-react-table';
+import {
+Box,
+Button,
+Dialog,
+DialogActions,
+DialogContent,
+DialogTitle,
+IconButton,
+MenuItem,
+Stack,
+TextField,
+Tooltip,
+Checkbox,
+} from '@mui/material';
+import { Delete, Edit } from '@mui/icons-material';
+// import { data, states } from './makeData';
+
+
+/**
+ * holds an array of objects that hold the inventory information
+ */
+export const data = [
+{
+    inventrory: '1',
+    itemName: 'Caffe Latte',
+    availability: '23',
+    min_req: '56',
+},
+{
+    inventrory: '2',
+    itemName: 'Caffe Mocha',
+    availability: '33',
+    min_req: '45',
+
+
+},
+{
+    inventrory: '3',
+    itemName: 'White Chocolate Mocha',
+    availability: '55',
+    min_req: '33',
+
+},
+{
+    inventrory: '4',
+    itemName: 'Freshly Brewed Coffee',
+    availability: '11',
+    min_req: '60',
+},
+{
+    inventrory: '5',
+    itemName: 'Cinnamon Dolce Latte',
+    availability: '30',
+    min_req: '90',
+},
+{
+    inventrory: '6',
+    itemName: 'Skinny Vanilla Latte',
+    availability: '30',
+    min_req: '30',
+},
+{
+    inventrory: '7',
+    itemName: 'Caramel Macchiato',
+    availability: '90',
+    min_req: '90',
+
+},
+{
+    inventrory: '8',
+    itemName: 'Caramel Flan Latte',
+    availability: '40',
+    min_req: '40',
+},
+];
+
+
+const ManagerMenu = () => {
+const [createModalOpen, setCreateModalOpen] = useState(false);
+const [tableData, setTableData] = useState(() => data);
+const [validationErrors, setValidationErrors] = useState({});
+
+const handleCreateNewRow = (values) => {
+tableData.push(values);
+setTableData([...tableData]);
+};
+
+const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
+if (!Object.keys(validationErrors).length) {
+    tableData[row.index] = values;
+    //send/receive api updates here, then refetch or update local table data for re-render
+    setTableData([...tableData]);
+    exitEditingMode(); //required to exit editing mode and close modal
+}
+};
+
+const handleDeleteRow = useCallback(
+(row) => {
+    //send api delete request here, then refetch or update local table data for re-render
+    tableData.splice(row.index, 1);
+    setTableData([...tableData]);
+},
+[tableData],
+);
+
+const getCommonEditTextFieldProps = useCallback(
+(cell) => {
+    return {
+    error: !!validationErrors[cell.id],
+    helperText: validationErrors[cell.id],
+    onBlur: (event) => {
+        const isValid =
+        cell.column.id === 'min_req'
+            ? validateAge(+event.target.value)
+            : validateRequired(event.target.value);
+        if (!isValid) {
+        //set validation error for cell if invalid
+        setValidationErrors({
+            ...validationErrors,
+            [cell.id]: `${cell.column.columnDef.header} is required`,
+        });
+        } else {
+
+        delete validationErrors[cell.id];
+        setValidationErrors({
+            ...validationErrors,
+        });
+        }
+    },
+    };
+},
+[validationErrors],
+);
+
+const columns = useMemo(
+() => [
+    {
+    accessorKey: 'inventrory',
+    header: 'Inventrory',
+    enableColumnOrdering: false,
+    enableSorting: false,
+    enableEditing:false,
+    size: 80,
+    },
+    {
+    accessorKey:'itemName',
+    header: 'Item Name',
+    size: 140,
+    enableColumnOrdering: false,
+    muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+        ...getCommonEditTextFieldProps(cell),
+    }),
+    },
+    {
+    accessorKey: 'availability',
+    header: 'Availability',
+    size: 140,
+    enableColumnOrdering: false,
+    muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+        ...getCommonEditTextFieldProps(cell),
+    }),
+    },
+    {
+    accessorKey: 'min_req',
+    header: 'Minimim Requirment',
+            enableColumnOrdering: false,
+    muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+        ...getCommonEditTextFieldProps(cell),
+    }),
+    },
+],
+[getCommonEditTextFieldProps],
+);
+
+return (
+&lt;>
+    &lt;MaterialReactTable
+    displayColumnDefOptions={{
+        'mrt-row-actions': {
+        muiTableHeadCellProps: {
+            align: 'center',
+        },
+        size: 120,
+        },
+    }}
+    columns={columns}
+    data={tableData}
+    editingMode="modal" //default
+    enableColumnOrdering
+    enableEditing
+    onEditingRowSave={handleSaveRowEdits}
+    renderRowActions={({ row, table }) => (
+        &lt;Box 
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        >
+        &lt;Tooltip arrow placement="left" title="Edit">
+            &lt;IconButton onClick={() => table.setEditingRow(row)}>
+            &lt;Edit />
+            &lt;/IconButton>
+        &lt;/Tooltip>
+        &lt;Tooltip arrow placement="right" title="Delete">
+            &lt;IconButton color="error" onClick={() => handleDeleteRow(row)}>
+            &lt;Delete />
+            &lt;/IconButton>
+        &lt;/Tooltip>
+        &lt;/Box>
+    )}
+    renderTopToolbarCustomActions={() => (
+        &lt;Button
+        color="secondary"
+        onClick={() => setCreateModalOpen(true)}
+        variant="contained"
+        >
+        Add an Item 
+        &lt;/Button>
+    )}
+    />
+    &lt;CreateNewAccountModal
+    columns={columns}
+    open={createModalOpen}
+    onClose={() => setCreateModalOpen(false)}
+    onSubmit={handleCreateNewRow}
+    />
+&lt;/>
+);
+};
+
+//Accounts of creating a mui dialog modal for creating new rows
+export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
+const [values, setValues] = useState(() =>
+columns.reduce((acc, column) => {
+    acc[column.accessorKey ?? ''] = '';
+    return acc;
+}, {}),
+);
+
+const handleSubmit = () => {
+//put your validation logic here
+onSubmit(values);
+onClose();
+};
+
+return (
+&lt;Dialog open={open}>
+    &lt;DialogTitle textAlign="center">Add a new item &lt;/DialogTitle>
+    &lt;DialogContent>
+    &lt;form onSubmit={(e) => e.preventDefault()}>
+        &lt;Stack
+        sx={{
+            width: '100%',
+            minWidth: { xs: '300px', sm: '360px', md: '400px' },
+            gap: '1.5rem',
+        }}
+        >
+        {columns.map((column) => (
+            &lt;TextField
+            key={column.accessorKey}
+            label={column.header}
+            name={column.accessorKey}
+            onChange={(e) =>
+                setValues({ ...values, [e.target.name]: e.target.value })
+            }
+            />
+        ))}
+        &lt;/Stack>
+    &lt;/form>
+    &lt;/DialogContent>
+    &lt;DialogActions sx={{ p: '1.25rem' }}>
+    &lt;Button onClick={onClose}>Cancel&lt;/Button>
+    &lt;Button color="secondary" onClick={handleSubmit} variant="contained">
+        Create New Account
+    &lt;/Button>
+    &lt;/DialogActions>
+&lt;/Dialog>
+);
+};
+
+const validateRequired = (value) => !!value.length;
+const validateAge = (age) => age >= 18 &amp;&amp; age &lt;= 50;
+
+export default ManagerMenu;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Accounts">Accounts</a></li><li><a href="global.html#Drink">Drink</a></li><li><a href="global.html#End">End</a></li><li><a href="global.html#Item">Item</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#ManagerNavBar">ManagerNavBar</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#Navbar">Navbar</a></li><li><a href="global.html#Order">Order</a></li><li><a href="global.html#Register">Register</a></li><li><a href="global.html#SalesHistory">SalesHistory</a></li><li><a href="global.html#SeasonMenu">SeasonMenu</a></li><li><a href="global.html#createAccount">createAccount</a></li><li><a href="global.html#createInventoryItem">createInventoryItem</a></li><li><a href="global.html#createMenuItem">createMenuItem</a></li><li><a href="global.html#createOpenOrder">createOpenOrder</a></li><li><a href="global.html#createSalesHistory">createSalesHistory</a></li><li><a href="global.html#createStaff">createStaff</a></li><li><a href="global.html#data">data</a></li><li><a href="global.html#deleteAccount">deleteAccount</a></li><li><a href="global.html#deleteInventoryItem">deleteInventoryItem</a></li><li><a href="global.html#deleteMenuItem">deleteMenuItem</a></li><li><a href="global.html#deleteOpenOrder">deleteOpenOrder</a></li><li><a href="global.html#deleteSalesHistory">deleteSalesHistory</a></li><li><a href="global.html#deleteStaff">deleteStaff</a></li><li><a href="global.html#getAccountById">getAccountById</a></li><li><a href="global.html#getAccounts">getAccounts</a></li><li><a href="global.html#getInventoryItemById">getInventoryItemById</a></li><li><a href="global.html#getInventoryItems">getInventoryItems</a></li><li><a href="global.html#getMenuItemById">getMenuItemById</a></li><li><a href="global.html#getMenuItems">getMenuItems</a></li><li><a href="global.html#getOpenOrders">getOpenOrders</a></li><li><a href="global.html#getOpenOrdersById">getOpenOrdersById</a></li><li><a href="global.html#getSalesHistory">getSalesHistory</a></li><li><a href="global.html#getSalesHistoryById">getSalesHistoryById</a></li><li><a href="global.html#getStaff">getStaff</a></li><li><a href="global.html#itemValues">itemValues</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#translate">translate</a></li><li><a href="global.html#updateAccount">updateAccount</a></li><li><a href="global.html#updateInventoryItem">updateInventoryItem</a></li><li><a href="global.html#updateMenuItem">updateMenuItem</a></li><li><a href="global.html#updateOpenOrders">updateOpenOrders</a></li><li><a href="global.html#updateSalesHistory">updateSalesHistory</a></li><li><a href="global.html#updateStaff">updateStaff</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Dec 06 2022 23:32:18 GMT-0600 (Central Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

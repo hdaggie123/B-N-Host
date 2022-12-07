@@ -4,6 +4,11 @@ import Item from './Item';
 import './Menu.css';
 import logoImg from '../Pictures/barnes&nobleLogo.jpg';
 
+
+/**
+ * 
+ * @returns create an returns a seasonal menu
+ */
 const SeasonMenu = () => {
 
     return (

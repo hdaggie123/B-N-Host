@@ -99,6 +99,10 @@ export const data = [
   ];
   
 
+/**
+ * 
+ * @returns shows all of the open orders
+ */
 const Accounts = () => {
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [tableData, setTableData] = useState(() => data);

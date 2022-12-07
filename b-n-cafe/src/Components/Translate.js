@@ -1,5 +1,9 @@
 import react from 'react';
 
+/**
+ * 
+ * @returns a translaton API that allows users to translate the website into different languages
+ */
 function translate() {
     return (
         <div>

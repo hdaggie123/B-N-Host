@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 
+/**
+ * 
+ * @returns creates a navigation bar for the manager
+ */
 const ManagerNavBar = () =>{
     const[show,setShow] = useState(false);
     function showSwitch(){

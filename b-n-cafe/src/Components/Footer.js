@@ -3,6 +3,10 @@ import {Link} from 'react-router-dom';
 import './Navbar.css';
 import LanguageIcon from '@mui/icons-material/Language';
 
+/**
+ * a navbar that is displayed on the top of the page
+ * @returns a footer with the options to navigate to different pages
+ */
 function Navbar() {
     const handleClick = () => setClick(!click);
     const closeMenu = () => setClick(false);

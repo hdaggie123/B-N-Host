@@ -75,6 +75,10 @@ export const data = [
 ];
 
 
+/**
+ * 
+ * @returns shows all of the sales history inforation in a table
+ */
 const SalesHistory = () => {
 const [createModalOpen, setCreateModalOpen] = useState(false);
 const [tableData, setTableData] = useState(() => data);

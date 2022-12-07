@@ -7,6 +7,10 @@ import {Link} from 'react-router-dom';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 
+/**
+ * 
+ * @returns the order page where users can place an order
+ */
 function Order () {
 
     return (
