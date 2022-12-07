@@ -131,12 +131,10 @@ const getStaffById = (request, response) => {
 }
 
 // POST
+
 const createAccount = (request, response) => {
-    //const { id, username, password, classification } = request.body
-    const username = request.body.username;
-    const password = request.body.password;
-    const classification = request.body.classification;
-    const id = 65;
+    const {username, password, classification } = request.body
+    const id = NULL
 
     pool.query('INSERT INTO accounts (id, username, password, classification) VALUES ($1, $2, $3, $4) RETURNING *', [id, username, password, classification], (error, results) => {
         if (error) {

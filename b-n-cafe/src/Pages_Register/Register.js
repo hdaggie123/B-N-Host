@@ -11,7 +11,7 @@ function Register() {
     const [roleReg, setRoleReg] = useState("");
 
     const register = () => {
-        axios.post("http://localhost:3001/register", {
+        axios.post("http://localhost:3001/accounts", {
             username: usernameReg,
             password: passwordReg,
             classification: roleReg,
@@ -34,14 +34,14 @@ function Register() {
                 </label>
                 <label>
                     Role:
-                    <select type = "text" onChange={(e) => setRoleReg(e.target.value)}>
+                    <select type = "text" onChange={(e) => setRoleReg(e.target.value)} name="classification">
                         <option value="customer">Customer</option>
                         <option value="manager">Manager</option>
                         <option value="staff">Staff</option>
                     </select>
                 </label>
                 <div>
-                <button className="button" onClick={register}>Register</button>
+                    <button className="button" onClick={register}>Register</button>
                 </div>
             </form>
         </div>

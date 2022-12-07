@@ -3,21 +3,6 @@ const bodyParser = require('body-parser')
 const app = express()
 const db = require('./queries')
 const port = 3001
-const cors = require('cors');
-
-
-app.use(express.json());
-app.use(cors());
-
-const Pool = require('pg').Pool
-const pool = new Pool({
-    user: 'csce315_903_demny',
-    host: 'csce-315-db.engr.tamu.edu',
-    database: 'csce315_903_11',
-    password: '12345',
-    port: 5432,
-    ssl: {rejectUnauthorized: false}
-})
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -40,22 +25,9 @@ app.get('/', (request, response) => {
 app.get('/accounts', db.getAccounts)
 app.get('/inventory', db.getInventoryItems)
 app.get('/accounts/:id', db.getAccountById)
-app.post('/register', db.createAccount)
+app.post('/accounts', db.createAccount)
 app.put('/accounts/:id', db.updateAccount)
 app.delete('/accounts/:id', db.deleteAccount)
-
-
-
-app.post("/register", (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const classification = req.body.role;
-    const sqlInsert = "INSERT INTO account_test (username, password, role) VALUES (?,?,?)";
-    db.query(sqlInsert, [username, password, classification], (err, result) => {
-        console.log(result);
-    });
-});
-
 
 // app.get('/inventory', db.getInventoryItems)
 app.get('/inventory/:id', db.getInventoryItemById)
