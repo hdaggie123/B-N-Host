@@ -44,7 +44,7 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/Staff">Staff</Link>
-                    </li>
+                    </li>*/}
                 </ul>
             </nav>
             <Outlet />
