@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './Navbar.css';
+import Search from './Search';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 function Navbar() {
     const handleClick = () => setClick(!click);
@@ -24,32 +28,40 @@ function Navbar() {
     return (
     <>
         <nav className="navbar">
+
             <div className="navbar-c">
-                
                 {/* This is where the navbar options are defined */}
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
-                        <Link to='/' className='nav-links' onClick={closeMenu}>
+                        <button className="Nav-button"><Link to='/' className='nav-links' onClick={closeMenu}>
                             Menu
-                        </Link>
+                        </Link> </button>
                     </li>
 
                     <li className='nav-item'>
-                        <Link to='/location' className='nav-links' onClick={closeMenu}>
+                    <button className="find-us-button"><Link to='/Map' className='nav-links' onClick={closeMenu}>
                             Find Us
                         </Link>
+                        <i> <LocationOnIcon /></i>
+                        </button>
                     </li>
 
+                    <li className='nav-item'><Search /> </li>
                     <li className='nav-item'>
-                        <Link to='/menu' className='nav-links' onClick={closeMenu}>
+                    <button className="Nav-button"><Link to='/Login' className='nav-links' onClick={closeMenu}>
+                            Login
+                        </Link>
+                        <i> < ManageAccountsIcon/> </i></button>
+                    </li>
+
+                    
+
+                    <li className='nav-item'>
+                    <button className="Nav-button"><Link to='/Order' className='nav-links' onClick={closeMenu}>
                             My Order
-                        </Link>
-                    </li>
-
-                    <li className='nav-item'>
-                        <Link to='/account' className='nav-links' onClick={closeMenu}>
-                            My Account
-                        </Link>
+                            </Link>
+                            <i> <ShoppingBasketIcon /> </i>
+                            </button>
                     </li>
                     <li className='nav-item'>
                         <Link to='/login' className='nav-links' onClick={closeMenu}>
@@ -61,7 +73,7 @@ function Navbar() {
                 {/* {button && <Button buttonStyle='btn--outline'>Account</Button>} */}
             </div>
         </nav>
-    </>
+        </>
     )
 }
 

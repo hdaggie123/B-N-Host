@@ -1,11 +1,12 @@
 import React from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-require('dotenv').config();
+import Iframe from 'react-iframe';
+// require('dotenv').config();
 
 
 const containerStyle = {
-    width: '400px',
-    height: '400px'
+    width: '500px',
+    height: '500px'
 };
 
 const center = {
@@ -14,19 +15,19 @@ const center = {
 };
 
 function map() {
-return (
-    <LoadScript
-        googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-    >
-    <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}>{}
-    
-    <></>
-    </GoogleMap>
-</LoadScript>
-)
-}
+    return(
+            <LoadScript
+                googleMapsApiKey={'AIzaSyDaKqiWtRPw6O0_r212g7Da6TeT10DsJmc'}
+            >
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={10}>{}
+            
+            <></>
+            </GoogleMap>
+        </LoadScript>
+    );
+};
 
 export default map;

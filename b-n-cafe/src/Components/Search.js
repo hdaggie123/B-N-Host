@@ -1,5 +1,7 @@
 import React, {Components} from 'react';
-import "./search.css";
+import "./Search.css";
+import SearchIcon from "@material-ui/icons/Search";
+
 
 export default function Search() {
     return (
@@ -7,8 +9,8 @@ export default function Search() {
             <div class="wrap">
                 <div class="search">
                     <input type="text" class="searchTerm" placeholder="Search for a menu item"></input>
-                    <button type="submit" class="searchButton">
-                        <i class="fa fa-search"></i>
+                    <button type="submit" className="searchButton">
+                         <i><SearchIcon /></i>
                     </button>
                 </div>
             </div>

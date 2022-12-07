@@ -15,6 +15,7 @@ Tooltip,
 Checkbox,
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
+import './manager.css';
 // import { data, states } from './makeData';
 
 
@@ -189,7 +190,11 @@ return (
     enableEditing
     onEditingRowSave={handleSaveRowEdits}
     renderRowActions={({ row, table }) => (
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
+        <Box 
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        >
         <Tooltip arrow placement="left" title="Edit">
             <IconButton onClick={() => table.setEditingRow(row)}>
             <Edit />
@@ -204,7 +209,7 @@ return (
     )}
     renderTopToolbarCustomActions={() => (
         <Button
-        color="secondary"
+        color="success"
         onClick={() => setCreateModalOpen(true)}
         variant="contained"
         >
@@ -239,7 +244,7 @@ onClose();
 
 return (
 <Dialog open={open}>
-    <DialogTitle textAlign="center">Add a new item </DialogTitle>
+    <DialogTitle textAlign="center" >Add a New item </DialogTitle>
     <DialogContent>
     <form onSubmit={(e) => e.preventDefault()}>
         <Stack
@@ -263,8 +268,8 @@ return (
     </form>
     </DialogContent>
     <DialogActions sx={{ p: '1.25rem' }}>
-    <Button onClick={onClose}>Cancel</Button>
-    <Button color="secondary" onClick={handleSubmit} variant="contained">
+    <Button color="error" onClick={onClose}>Cancel</Button>
+    <Button color="success" onClick={handleSubmit} variant="contained">
         Create New Account
     </Button>
     </DialogActions>

@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 
 const Layout = () => {
@@ -43,11 +44,11 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/Staff">Staff</Link>
-                    </li> */}
+                    </li>*/}
                 </ul>
             </nav>
-
             <Outlet />
+            <Footer />
         </>
     )
 };
