@@ -8,11 +8,13 @@ function Register() {
     //Here I am going to add the database access so data gets stored
     const [usernameReg, setUsernameReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
+    const [roleReg, setRoleReg] = useState("");
 
     const register = () => {
-        axios.post("http://localhost:3001/register", {
+        axios.post("http://localhost:3001/accounts", {
             username: usernameReg,
             password: passwordReg,
+            classification: roleReg,
         }).then((response) => {
             console.log(response);
         });
@@ -28,18 +30,18 @@ function Register() {
                 </label>
                 <label>
                     Password:
-                    <input type="password" onChange={(e) => setPasswordReg(e.target.value)} name="password" />
+                    <input type="text" onChange={(e) => setPasswordReg(e.target.value)} name="password" />
                 </label>
                 <label>
                     Role:
-                    <select>
+                    <select type = "text" onChange={(e) => setRoleReg(e.target.value)} name="classification">
                         <option value="customer">Customer</option>
                         <option value="manager">Manager</option>
                         <option value="staff">Staff</option>
                     </select>
                 </label>
                 <div>
-                <button className="button" onClick={register}>Register</button>
+                    <button className="button" onClick={register}>Register</button>
                 </div>
             </form>
         </div>

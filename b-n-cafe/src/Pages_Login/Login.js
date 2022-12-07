@@ -9,9 +9,7 @@ import jwt_decode from 'jwt-decode';
 export default function Login() {
     //I will be creating a simple login page
     //Here I will handle manual login entries
-    const [usernameReg, setUsernameReg] = useState("");
-    const [passwordReg, setPasswordReg] = useState("");
-
+    
 
 
 
