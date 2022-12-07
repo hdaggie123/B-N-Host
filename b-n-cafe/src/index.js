@@ -10,13 +10,14 @@ import Layout from './Main/Layout';
 // import MenuList from './Components/MenuList';
 import MenuAdd from './Components/MenuAdd';
 
-// import Login from './Main/Login';
+import Login from './Pages_Login/Login';
+import Register from './Pages_Register/Register';
 
-// import Accounts from './Pages_Staff/Accounts';
-// import Inventory from './Pages_Staff/Inventory';
-// import ManagerMenu from './Pages_Staff/ManagerMenu';
-// import SalesHistory from './Pages_Staff/SalesHistory';
-// import Staff from './Pages_Staff/Staff';
+import Accounts from './Pages_Staff/Accounts';  
+import Inventory from './Pages_Staff/Inventory';
+import ManagerMenu from './Pages_Staff/ManagerMenu';
+import SalesHistory from './Pages_Staff/SalesHistory';
+import Staff from './Pages_Staff/Staff';
 
 export default function App() {
     const [data, setData] = React.useState(null);
@@ -39,6 +40,7 @@ export default function App() {
                     <Route path="End" element={<End />} />
                     
                     <Route path="Login" element={<Login />} />
+                    <Route path="Register" element={<Register />} />
                     <Route path="Accounts" element={<Accounts />} />
                     <Route path="Inventory" element={<Inventory />} />
                     <Route path="Manager_Menu" element={<ManagerMenu />} />
