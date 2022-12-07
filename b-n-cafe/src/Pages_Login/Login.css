@@ -1,11 +1,43 @@
+:root{
+    --green: #006241;
+}
+
 *{
     font-family: 'Nunito', sans-serif;
 }
+
 .background{
-    background-color: rgb(0, 102, 53);
+    /* background-color: var(--green); */
     height: 100%;
     
 }
+
+.login_box h2{
+    justify-content: center;
+    text-align: center;
+    /* color:red; */
+}
+.sign-input{
+    justify-content: center;
+    /* text-align: center; */
+    /* background-color:red; */
+    display: grid;  
+}
+
+.sign-input input{
+    /* background-color: red; */
+    border: none;
+    color: black;
+    width: 270px;
+    padding: 20px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px;
+    border-style: solid;
+    border-color: #000;
+    border-radius: 12px;
+}
+
 .wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -18,27 +50,30 @@
     grid-column: 2;
 }
 .header{
-    background-color: rgb(0, 102, 53);
-    color: white;
+    /* background-color: rgb(0, 102, 53); */
+    color:var(--green);
     font-size: 30px;
     font-weight: bold;
     text-align: center;
     padding: 10px;
+    justify-content: center;
+    text-align: center;
 }
-.star-sign{
-    margin-left: 8rem;
-    background-color: rgb(0, 102, 53);
-    color: rgb(0, 0, 0);
-    font-size: 1.8rem;
-    font-weight: 500;
-    cursor: pointer;
+.header h1{
+    text-align: center;
+
 }
+
 .star-sign:hover{
-    background-color: rgb(0, 102, 53);
-    color: rgb(0, 0, 0);
-    font-size: 1.8rem;
-    font-weight: 500;
     cursor: pointer;
+    background-color: #014d33;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 40px;
+    display: inline-block;
 }
 
 .login_box{
@@ -51,16 +86,7 @@
     padding: 2rem;
     box-shadow: 0 0 1rem 0.2rem rgba(0,0,0,0.2);
 }
-.star-sign button{
-    background: rgb(0, 102, 53);
-    color: #000;
-    padding: 0.5rem 1.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 500;
-}
+
 .logo{
     width: 30rem;
     height: 30rem;
@@ -71,4 +97,25 @@
     display: inline-block;
     width: 50%;
     height: 100%;
+}
+
+.star-sign{
+    background-color: #006241;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 40px;
+    display: inline-block;
+    align-items: center;
+}
+.star-sign a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    padding: 10px 20px;
+    position: relative;
 }
