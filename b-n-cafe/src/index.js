@@ -11,6 +11,7 @@ import Layout from './Main/Layout';
 
 import Login from './Pages_Login/Login';
 import Map from './Components/Map';
+import Translate from './Components/Translate';
 
 import Accounts from './Pages_Staff/Accounts';
 import Inventory from './Pages_Staff/Inventory';
@@ -39,6 +40,7 @@ export default function App() {
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Map" element={<Map />} />
                     <Route path="ManagerNavBar" element={<ManagerNavBar/>} />
+                    <Route path="Translate" element={<Translate/>} />
                 </Route>
             </Routes>
         </Router>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import Translating from './Translate';
 // require('dotenv').config();
 //import the google maps api element used in this file
 
@@ -41,6 +42,8 @@ function map() {
       /></>
             </GoogleMap>
         </LoadScript>
+
+        // <Translate/>
 
     );
 };

@@ -50,6 +50,9 @@ const Layout = () => {
                     <li>
                         <Link to="/ManagerNavBar">ManagerNavBar</Link>
                     </li>
+                    <li>
+                        <Link to = "/Translate">Translate</Link>
+                    </li>
                 </ul>
             </nav>
             <Outlet />
