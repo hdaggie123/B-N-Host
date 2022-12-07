@@ -1,3 +1,6 @@
+:root{
+  --textSize:18px;
+}
 
 .navbar {
   background: linear-gradient(900deg, rgb(15, 14, 14) 0%, rgb(17, 16, 16) 75%);
@@ -21,8 +24,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 height: 80px;
-max-width: 1500px;
-margin-right: 25px;
+/* max-width: 1500px; */
+/* margin-right: 25px; */
 
 }
 
@@ -43,8 +46,8 @@ margin-right: 25px;
 /* changed */
 .nav-item {
 height: 80px;
-padding-left: 50px;
-padding-right: 50px;
+/* padding-left: 50px;
+padding-right: 50px; */
 }
 
 /* .nav-links {
@@ -135,7 +138,7 @@ display: none;
 
 .fa-times {
     color: #fff;
-    font-size: 2rem;
+    font-size:  var(--textSize);
 }
 
 .nav-links-mobile {
@@ -145,7 +148,7 @@ display: none;
     border-radius: 4px;
     width: 80%;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size:  var(--textSize);
     background-color: transparent;
     color: #fff;
     padding: 14px 20px;
@@ -164,12 +167,12 @@ display: none;
     background-color: #006241;
     border: none;
     color: white;
-    width: 270px;
+    width: 260px;
     padding: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size:  var(--textSize);
     /* margin: 4px; */
     border-radius: 40px;
   }
@@ -177,7 +180,7 @@ display: none;
   .Nav-button a{
     text-decoration: none;
     color:#fff;
-    font-size: 20px;
+    font-size:  var(--textSize);
     letter-spacing:1px;
     font-weight: 400;
     padding:10px 20px;
@@ -211,12 +214,12 @@ display: none;
     background-color: white;
     border: none;
     color:black;
-    width: 270px;
+    width: 260px;
     padding: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size:  var(--textSize);
     margin: 4px;
     border-radius: 40px;
 
@@ -225,7 +228,7 @@ display: none;
   .find-us-button a{
     text-decoration: none;
     color:black;
-    font-size: 20px;
+    font-size:  var(--textSize);
     letter-spacing:1px;
     font-weight: 400;
     padding:10px 20px;

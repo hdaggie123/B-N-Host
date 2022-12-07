@@ -20,7 +20,7 @@ import { Delete, Edit } from '@mui/icons-material';
 
 export const data = [
     {
-        inventrory: '1',
+      inventrory: '1',
       itemName: 'Caffe Latte',
       availability: '23',
       min_req: '56',

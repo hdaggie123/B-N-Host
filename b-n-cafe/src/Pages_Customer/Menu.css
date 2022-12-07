@@ -1,8 +1,15 @@
+:root{
+  --black:black;
+  --green:#006241;
+}
+
+
 
 * {
     box-sizing: border-box;
     content: width=device-width, initial-scale=1.0;
     font-family: 'Nunito', sans-serif;
+
 }
 
 .row::after {
@@ -22,7 +29,7 @@
 .col-1-5 {width: 25%;}
 .col-2 {width: 33.33%;}
 .col-2-5 {width: 41.66%;}
-/* .col-3 {width: 50%;} */
+.col-3 {width: 50%;}
 .col-3-5 {width: 64%;}
 .col-4 {width: 66.66%;}
 .col-4-5 {width: 75%;}
@@ -109,6 +116,9 @@ hr.solid {
 
 .menu-items {
     text-align: center;
+    margin-left:10%;
+    margin-right:10%;
+
     /* max-width: 1200px; */
 
 }
@@ -222,13 +232,12 @@ hr.solid {
 /* border-radius: 25px; Makes the border rounded */
   padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 150px;
 }
 .order-item-name {
     text-align: left;
     text-transform: uppercase; /* lowercase, capitalize */
     word-spacing: 5px;
-    color:rgb(0, 83, 0);
+    color:var(--black);
     font-size: 35px;
 
     /* 2. Set the border */
@@ -248,7 +257,7 @@ h3{
   text-align: left;
   text-transform: uppercase; /* lowercase, capitalize */
   word-spacing: 5px;
-  color:rgb(0, 83, 0);
+  color:var(--black);
   font-size: 35px;
 
   /* 2. Set the border */
@@ -265,7 +274,7 @@ h3{
   text-align: left;
   text-transform: uppercase; /* lowercase, capitalize */
   word-spacing: 5px;
-  color:rgb(0, 83, 0);
+  color:var(--black);
   font-size: 35px;
 
   /* 2. Set the border */
@@ -281,7 +290,7 @@ h3{
   text-align: left;
   text-transform: uppercase; /* lowercase, capitalize */
   word-spacing: 5px;
-  color:rgb(0, 83, 0);
+  color:var(--black);
   font-size: 35px;
 
   /* 2. Set the border */
@@ -337,5 +346,8 @@ h3{
 
 .menu-items {
   justify-content: center;
-
+}
+.warp-myorder{
+  justify-content: center;
+  align-items: center;
 }
