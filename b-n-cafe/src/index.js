@@ -1,4 +1,3 @@
-//Here I want a simple index page
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -8,8 +7,11 @@ import Drink from './Pages_Customer/Drinks';
 import Order from './Pages_Customer/Order';
 import End from './Pages_Customer/End';
 import Layout from './Main/Layout';
+import MenuList from './Components/MenuList';
+// import MenuAdd from './Components/MenuAdd';
 
 import Login from './Pages_Login/Login';
+<<<<<<< HEAD
 import Map from './Components/Map';
 
 import Accounts from './Pages_Staff/Accounts';
@@ -19,26 +21,55 @@ import SalesHistory from './Pages_Staff/SalesHistory';
 import Staff from './Pages_Staff/Staff';
 import ManagerNavBar from './Pages_Staff/ManagerNavBar';
 
+=======
+import Register from './Pages_Register/Register';
+
+// import Accounts from './Pages_Staff/Accounts';  
+// import Inventory from './Pages_Staff/Inventory';
+// import ManagerMenu from './Pages_Staff/ManagerMenu';
+// import SalesHistory from './Pages_Staff/SalesHistory';
+// import Staff from './Pages_Staff/Staff';
+>>>>>>> e625c59805bda03d9c3063575fee91bf3d2cc61e
 
 export default function App() {
+    const [data, setData] = React.useState(null);
+
+    React.useEffect(() => {
+        fetch("/menu")
+            .then((res) => res.json())
+            .then((data) => setData(data.message));
+    }, []);
+
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<Menu />} />
-                    <Route path="SeasonMenu" element={<SeasonMenu />} />
+                    <Route index element={<MenuList />} />
+                    {/* <Route path="SeasonMenu" element={<SeasonMenu />} />
                     <Route path="Drink" element={<Drink />} />
                     <Route path="Order" element={<Order />} />
+<<<<<<< HEAD
                     <Route path="End" element={<End />} />
+=======
+                    <Route path="End" element={<End />} />*/}
+                    
+>>>>>>> e625c59805bda03d9c3063575fee91bf3d2cc61e
                     <Route path="Login" element={<Login />} />
-                    <Route path="Accounts" element={<Accounts />} />
+                    <Route path="Register" element={<Register />} />
+                    {/*<Route path="Accounts" element={<Accounts />} />
                     <Route path="Inventory" element={<Inventory />} />
                     <Route path="Manager_Menu" element={<ManagerMenu />} />
+<<<<<<< HEAD
                     <Route path="SalesHistory" element={<SalesHistory />} />
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Map" element={<Map />} />
                     <Route path="ManagerNavBar" element={<ManagerNavBar/>} />
+=======
+                    <Route path="Sales_history" element={<SalesHistory />} />
+                    <Route path="Staff" element={<Staff />} />  */}
+
+>>>>>>> e625c59805bda03d9c3063575fee91bf3d2cc61e
                 </Route>
             </Routes>
         </Router>
