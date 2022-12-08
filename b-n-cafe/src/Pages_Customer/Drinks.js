@@ -4,12 +4,14 @@ import Item from './Item';
 import './Menu.css';
 import logoImg from '../Pictures/barnes&nobleLogo.jpg';
 import { Link } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add';
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 function itemValues(item) {
     const itemName = item.name;
     return itemName;
 }
-  
+
 
 const Drink = () => {
     const itemName = "PEPPERMINT MOCHA";
@@ -35,6 +37,27 @@ const Drink = () => {
         {/* <div className="item-picture">
                 PEPPERMINT MOCHA
         </div> */}
+        <row>
+        <div className="menu-items">
+            <div class="col-3">
+                <div className="back-next">
+                    <h1>Back to Menu</h1>
+                    <button className="add-button"><Link to='/Menu' className='nav-links'>
+                        <i><ArrowBackIcon /></i></Link>
+                    </button>
+                </div>
+            </div>
+            <div class="col-3">
+            <div className="next-button right">
+                    <h1>Continue to checkout</h1>
+                    <button className="con-checkoout-button"><Link to='Order' className='nav-links'>
+                        
+                        <i><ShoppingCartCheckoutIcon /></i></Link>
+                    </button>
+            </div>
+            </div>
+            </div>
+        </row>
 
         {/* #3 - SIZE & CUSTOMIZE HERE */}
         <div class="row">
@@ -65,14 +88,7 @@ const Drink = () => {
             </div>
             </div>
         </div>
-        <div class="row">
-                    <div className="menu-items">
-                        {/* added a button here  */}
-                        {/* <Item name="Checkout" price="$2.00"/> */}
-                        <button className="menu-button"><i>Add to Order</i></button>
-                    </div>
-            </div>
-
+        
         {/* #4 - SIZE OPTIONS HERE */}
         {/* <div class="row">
             <div className="menu-items">
@@ -80,7 +96,7 @@ const Drink = () => {
             </div>
         </div> */}
 
-
+        
         </>
     );
 };

@@ -19,11 +19,14 @@ const Layout = () => {
                         <Link to="/Drink">Drink</Link>
                     </li>
                     <li>
+                        <Link to="/ShowMap">ShowMaps</Link>
+                    </li>
+                    {/* <li>
                         <Link to="/Order">Order</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Link to="/End">End</Link>
-                    </li>
+                    </li> */}
                     {/* <li>
                         <Link to="/Login">Login</Link>
                     </li>

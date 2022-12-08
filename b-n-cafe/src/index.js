@@ -11,6 +11,7 @@ import Layout from './Main/Layout';
 
 import Login from './Pages_Login/Login';
 import Map from './Components/Map';
+import ShowMap from './Components/ShowMap';
 
 import Accounts from './Pages_Staff/Accounts';
 import Inventory from './Pages_Staff/Inventory';
@@ -27,6 +28,7 @@ export default function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Menu />} />
                     <Route path="SeasonMenu" element={<SeasonMenu />} />
+                    <Route path="Menu" element={<Menu />} />
                     <Route path="Drink" element={<Drink />} />
                     <Route path="Order" element={<Order />} />
                     <Route path="End" element={<End />} />
@@ -39,6 +41,8 @@ export default function App() {
                     <Route path="Staff" element={<Staff />} />
                     <Route path="Map" element={<Map />} />
                     <Route path="ManagerNavBar" element={<ManagerNavBar/>} />
+                    <Route path="Drink/Order" element={<Order />} />
+                    <Route path="ShowMap" element={<ShowMap />} />
                 </Route>
             </Routes>
         </Router>
