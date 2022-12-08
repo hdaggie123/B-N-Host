@@ -132,10 +132,28 @@ const getStaffById = (request, response) => {
 
 // POST
 
+//Method to retrieve login
+
+const getLogin = (request, response) => {
+    const username = (request.params.username).toString();
+    const password = (request.params.password).toString();
+    //const username = request.body.username;
+    //const password = request.body.password;
+    pool.query('SELECT * FROM accounts WHERE username = $1 AND password = $2', [username, password], (error, results) => {
+        if (error) {
+            results.send(error)
+        }
+        if(results.rows.length > 0){
+            response.status(200).send(results.rows);
+        }
+        else{
+            response.send('invalid Login');
+        }
+    })
+}
+
 const createAccount = (request, response) => {
     const {username, password, classification } = request.body
-    const id = NULL
-
     pool.query('INSERT INTO accounts (id, username, password, classification) VALUES ($1, $2, $3, $4) RETURNING *', [id, username, password, classification], (error, results) => {
         if (error) {
             throw error
@@ -366,6 +384,7 @@ const deleteStaff = (request, response) => {
 module.exports = {
     getAccounts,
     getAccountById,
+    getLogin,
     createAccount,
     updateAccount,
     deleteAccount,

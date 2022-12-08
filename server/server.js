@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const db = require('./queries')
 const port = 3001
+const cors = require('cors')
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -11,7 +12,15 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
     });
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
+
+app.use(cors())
 app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({
@@ -28,6 +37,8 @@ app.get('/accounts/:id', db.getAccountById)
 app.post('/accounts', db.createAccount)
 app.put('/accounts/:id', db.updateAccount)
 app.delete('/accounts/:id', db.deleteAccount)
+
+app.get('/login/:username/:password', db.getLogin);
 
 // app.get('/inventory', db.getInventoryItems)
 app.get('/inventory/:id', db.getInventoryItemById)
