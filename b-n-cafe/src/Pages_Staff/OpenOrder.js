@@ -1,5 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import MaterialReactTable from 'material-react-table';
+// import {Pool} from 'postgres-pool';
+// const { Pool } = require('pg');
+// const Pool = require('pg').Pool
 import {
 Box,
 Button,
@@ -12,79 +15,102 @@ MenuItem,
 Stack,
 TextField,
 Tooltip,
-Checkbox,
 } from '@mui/material';
-
+import { Delete, Edit } from '@mui/icons-material';
 import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+// import { data, states } from './makeData';
 
+// Done:
+// Order ID: '1',
+// Item Name: 'Caffe Latte',
+// Costomization: '23',
+//Server name: '56'
+
+
+// read in the open order table into the array 
+
+//setup db connection 
+// const Pool = require('pg').Pool
+
+// const express = require('express')
+// const app = express()
+
+// const pool = new Pool({
+//   user: 'csce315_903_sulemanji',
+//   host: 'csce-315-db.engr.tamu.edu',
+//   database: 'csce315_903_11',
+//   password: ' 830007169',
+//   port: 3000,
+// });
 
 export const data = [
 {
-    order_id: '1',
+    inventrory: '1',
     itemName: 'Caffe Latte',
-    customizations: '23',
+    availability: '23',
     min_req: '56',
 },
 {
-    order_id: '2',
+    inventrory: '2',
     itemName: 'Caffe Mocha',
-    customizations: '33',
+    availability: '33',
     min_req: '45',
 
 
 },
 {
-    order_id: '3',
+    inventrory: '3',
     itemName: 'White Chocolate Mocha',
-    customizations: '55',
+    availability: '55',
     min_req: '33',
 
 },
 {
-    order_id: '4',
+    inventrory: '4',
     itemName: 'Freshly Brewed Coffee',
-    customizations: '11',
+    availability: '11',
     min_req: '60',
 },
 {
-    order_id: '5',
+    inventrory: '5',
     itemName: 'Cinnamon Dolce Latte',
-    customizations: '30',
+    availability: '30',
     min_req: '90',
 },
 {
-    order_id: '6',
+    inventrory: '6',
     itemName: 'Skinny Vanilla Latte',
-    customizations: '30',
+    availability: '30',
     min_req: '30',
 },
 {
-    order_id: '7',
+    inventrory: '7',
     itemName: 'Caramel Macchiato',
-    customizations: '90',
+    availability: '90',
     min_req: '90',
 
 },
 {
-    order_id: '8',
+    inventrory: '8',
     itemName: 'Caramel Flan Latte',
-    customizations: '40',
+    availability: '40',
     min_req: '40',
 },
 ];
 
 
 const Accounts = () => {
+const [createModalOpen, setCreateModalOpen] = useState(false);
 const [tableData, setTableData] = useState(() => data);
 const [validationErrors, setValidationErrors] = useState({});
 
-
-const handleCheckRow = useCallback(
+const handleDeleteRow = useCallback (
 (row) => {
     //send api delete request here, then refetch or update local table data for re-render
     tableData.splice(row.index, 1);
     setTableData([...tableData]);
 },
+// array, append the row to tha array
 [tableData],
 );
 
@@ -93,6 +119,7 @@ const getCommonEditTextFieldProps = useCallback(
     return {
     error: !!validationErrors[cell.id],
     helperText: validationErrors[cell.id],
+
     };
 },
 [validationErrors],
@@ -101,8 +128,8 @@ const getCommonEditTextFieldProps = useCallback(
 const columns = useMemo(
 () => [
     {
-    accessorKey: 'order_id',
-    header: 'Order Id',
+    accessorKey: 'inventrory',
+    header: 'Inventrory',
     enableColumnOrdering: false,
     enableSorting: false,
     size: 80,
@@ -113,24 +140,24 @@ const columns = useMemo(
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
-        ...getCommonEditTextFieldProps(cell),
+        
     }),
     },
     {
-    accessorKey: 'customizations',
-    header: 'Customizations',
+    accessorKey: 'availability',
+    header: 'Availability',
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
-        ...getCommonEditTextFieldProps(cell),
+        
     }),
     },
     {
     accessorKey: 'min_req',
-    header: 'Server',
+    header: 'Minimim Requirment',
             enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
-        ...getCommonEditTextFieldProps(cell),
+        
     }),
     },
 ],
@@ -139,9 +166,7 @@ const columns = useMemo(
 
 return (
 <>
-
     <MaterialReactTable
-    
     displayColumnDefOptions={{
         'mrt-row-actions': {
         muiTableHeadCellProps: {
@@ -152,36 +177,23 @@ return (
     }}
     columns={columns}
     data={tableData}
-    editingMode="modal" //default
     enableColumnOrdering
-    enableEditing
-
     renderRowActions={({ row, table }) => (
-        <Box 
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        >
-        <Tooltip arrow placement="right" title="Done">
-            <IconButton color="inherit" onClick={() => handleCheckRow(row)}>
+        <Box sx={{ display: 'flex', gap: '1rem' }}>
+        <Tooltip arrow placement="right" title="finish order">
+            <IconButton color="error" onClick={() => handleDeleteRow(row)}>
             <CheckBoxOutlineBlankOutlinedIcon />
             </IconButton>
         </Tooltip>
         </Box>
     )}
-
-    renderTopToolbarCustomActions={() => (
-        <h1
-        color="secondary"
-        variant="contained"
-        >
-        View open Orders Here: 
-        </h1>
-    )}
-
+    
     />
 </>
 );
 };
+
+
+const validateRequired = (value) => !!value.length;
 
 export default Accounts;

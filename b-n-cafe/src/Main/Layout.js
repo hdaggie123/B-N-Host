@@ -1,35 +1,33 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from '../Components/Navbar';
-
+import Footer from '../Components/Footer';
+// import BottomNav from './Pages/bottomNav';
 
 const Layout = () => {
     return (
         <>
-        <Navbar />
+        {/* <Navbar /> */}
             <nav>
                 <ul>
-                    {/* <li>
-                        <Link to="/">MenuList</Link>
-                    </li> */}
+                    <li>
+                        <Link to="/">Menu</Link>
+                    </li>
                     {/* <li>
                         <Link to="/SeasonMenu">SeasonMenu</Link>
                     </li>
                     <li>
                         <Link to="/Drink">Drink</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Link to="/Order">Order</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Link to="/End">End</Link>
-                    </li>*/}
+                    </li> */}
                     {/* <li>
                         <Link to="/Login">Login</Link>
                     </li> */}
-                    <li>
-                        <Link to="/Register">Register</Link>
-                    </li>
-                    {/*<li>
+                    {/* <li>
                         <Link to="/Accounts">Accounts</Link>
                     </li>
                     <li>
@@ -44,10 +42,19 @@ const Layout = () => {
                     <li>
                         <Link to="/Staff">Staff</Link>
                     </li> */}
+                    {/* <li>
+                        <Link to="/Map">Map</Link>
+                    </li> */}
+                    <li>
+                        <Link to="/InventoryList">InventoryList</Link>
+                    </li>
+                    <li>
+                        <Link to="/SalesHistory">SalesHistory</Link>
+                    </li>
                 </ul>
             </nav>
-
             <Outlet />
+            {/* <Footer /> */}
         </>
     )
 };
