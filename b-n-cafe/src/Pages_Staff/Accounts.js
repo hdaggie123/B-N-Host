@@ -17,7 +17,7 @@ Checkbox,
 import { Delete, Edit } from '@mui/icons-material';
 import './manager.css';
 // import { data, states } from './makeData';
-
+import ManagerNavBar from './ManagerNavBar';
 
 export const data = [
 {
@@ -174,6 +174,7 @@ const columns = useMemo(
 
 return (
 <>
+    <ManagerNavBar />
     <MaterialReactTable
     displayColumnDefOptions={{
         'mrt-row-actions': {

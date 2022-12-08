@@ -18,6 +18,9 @@ import {
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import ManagerNavBar from './ManagerNavBar';
+
+
 // import { data, states } from './makeData';
 
 // Done:
@@ -166,6 +169,7 @@ const Accounts = () => {
 
   return (
     <>
+        <ManagerNavBar />
       <MaterialReactTable
         displayColumnDefOptions={{
           'mrt-row-actions': {

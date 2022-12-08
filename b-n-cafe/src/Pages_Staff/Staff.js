@@ -16,6 +16,7 @@ import {
 } from '@mui/material';
 
 import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import ManagerNavBar from './ManagerNavBar';
 
 
 export const data = [
@@ -139,7 +140,7 @@ const Accounts = () => {
 
   return (
     <>
-
+    <ManagerNavBar />
       <MaterialReactTable
         
         displayColumnDefOptions={{

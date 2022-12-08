@@ -12,6 +12,7 @@ function Order () {
     return (
         <>
         {/* #1 - LOGO HERE */}
+        
 
             <div class="row">
                 <div class="col-6"><img src={logoImg} alt=""/></div>
@@ -35,7 +36,11 @@ function Order () {
             {/* #3 - SIZE & CUSTOMIZE HERE */}
             <div className="menu-items">
                 <div class="row">
-                    <div class="col-2"><h3 className="order-item-picture">Picture</h3></div>
+                    <div class="col-2">
+                        <div className= "drink-img">
+                            <img src={require("../Pictures/1.png")} alt="Starbucks" width="40%" />
+                        </div>
+                    </div>
                     <div class="col-2">
                         <h3 className="order-item-name">Peppermint Mocha</h3>
                         <h2 className="order-item-name">Tall 12 fl oz</h2>
@@ -43,15 +48,6 @@ function Order () {
                     <div class="col-2"><h3 className="order-item-name">$3.65</h3></div>
                     </div>
                 </div>
-
-                <div className="menu-items">
-                    <div class="row">
-                       
-                        {/* <div class="col-2"><h3 className="order-customize-name">+$0.80</h3></div> */}
-
-                    </div>
-                </div>
-
 
                 <div className="menu-items">
                     <div class="row">
@@ -81,13 +77,12 @@ function Order () {
                     <div className="menu-items">
                         {/* added a button here  */}
                         {/* <Item name="Checkout" price="$2.00"/> */}
-                        <button className="menu-button"><Link to='/' className='nav-links'>
+                        <button className="menu-button"><Link to='/End' className='nav-links'>
                             Checkout
                             <i><ShoppingCartCheckoutIcon /></i></Link>
                         </button>
                     </div>
                 </div>
-
         </>
     )
 }

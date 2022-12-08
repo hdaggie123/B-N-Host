@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
+import SalesHistory from './SalesHistory';
 
 const ManagerNavBar = () =>{
     const[show,setShow] = useState(false);
@@ -7,6 +8,7 @@ const ManagerNavBar = () =>{
         return setShow(!show)
     }
     return<>
+
     <div className="manager_Nav_center">
         <div className = {show ? "links active": "links"}>
             <button className="ManagerNav"> <Link onClick={()=>showSwitch()} to="/SalesHistory">Sales History</Link></button>

@@ -9,12 +9,12 @@ const Layout = () => {
         <Navbar />
             <nav>
                 <ul>
-                    <li>
+                    {/* <li>
                         <Link to="/">Menu</Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                         <Link to="/SeasonMenu">SeasonMenu</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/Drink">Drink</Link>
                     </li>
@@ -24,7 +24,7 @@ const Layout = () => {
                     <li>
                         <Link to="/End">End</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/Login">Login</Link>
                     </li>
                     <li>
@@ -44,7 +44,7 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/Map">Map</Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to="/ManagerNavBar">ManagerNavBar</Link>
                     </li>
