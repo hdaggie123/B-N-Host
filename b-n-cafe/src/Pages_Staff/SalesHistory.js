@@ -29,7 +29,7 @@ const [data, setData] = useState({});
 const [tableData, setTableData] = useState([]);
 
 useEffect(() => {
-    fetch("http://localhost:3001/inventory")
+    fetch("http://localhost:3001/salesHistory")
     .then((data) => data.json())
     .then((data) => setTableData(data))
 }, [])
@@ -37,7 +37,7 @@ console.log(tableData)
 const [validationErrors, setValidationErrors] = useState({});
 
 const handleCreateNewRow = (values) => {
-    api.post("/inventory", values)
+    api.post("/salesHistory", values)
     .then(res => {
         let dataToAdd = [...data];
         dataToAdd.push(values);
@@ -51,10 +51,10 @@ const handleCreateNewRow = (values) => {
 };
 
 const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
-    api.put("/inventory/"+values.inventory_id, values)
+    api.put("/salesHistory/"+values.order_id, values)
         .then(res => {
             const dataUpdate = [...data];
-            const index = row.tableData.inventory_id;
+            const index = row.tableData.order_id;
             dataUpdate[index] = values;
             setData([...dataUpdate]);
         })
@@ -70,7 +70,7 @@ const handleDeleteRow =
 (row) => {
     const id = row.id+1;
     console.log(id);
-    api.delete("/inventory/"+id)
+    api.delete("/salesHistory/"+id)
     // .then(res => {
     //     // const dataDelete = [...data];
     //     // const index = row.tableData.id;
@@ -91,7 +91,7 @@ const getCommonEditTextFieldProps = useCallback(
     helperText: validationErrors[cell.id],
     onBlur: (event) => {
         const isValid =
-        cell.column.id === 'minReq'
+        cell.column.id === 'purchase_date'
             ? validateAge(+event.target.value)
             : validateRequired(event.target.value);
         if (!isValid) {
@@ -116,16 +116,16 @@ const getCommonEditTextFieldProps = useCallback(
 const columns = useMemo(
 () => [
     {
-    accessorKey: 'inventory_id',
-    header: 'Inventory ID',
+    accessorKey: 'order_id',
+    header: 'Order ID',
     enableColumnOrdering: false,
     enableSorting: false,
     enableEditing:false,
     size: 80,
     },
     {
-    accessorKey:'inventory_item',
-    header: 'Item Name',
+    accessorKey:'inventory_id',
+    header: 'Inventory ID',
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -133,8 +133,8 @@ const columns = useMemo(
     }),
     },
     {
-    accessorKey: 'inventory_amount',
-    header: 'Availability',
+    accessorKey: 'menu_item',
+    header: 'Menu Item',
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -142,13 +142,38 @@ const columns = useMemo(
     }),
     },
     {
-    accessorKey: 'minimum_requirement',
-    header: 'Minimim Requirment',
+    accessorKey: 'item_size',
+    header: 'Item Size',
+    size: 140,
             enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
         ...getCommonEditTextFieldProps(cell),
     }),
     },
+    {
+        accessorKey: 'customizations',
+        header: 'Customizations',
+                enableColumnOrdering: false,
+        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+            ...getCommonEditTextFieldProps(cell),
+        }),
+        },
+        {
+            accessorKey: 'item_price',
+            header: 'Item Price',
+                    enableColumnOrdering: false,
+            muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+                ...getCommonEditTextFieldProps(cell),
+            }),
+            },
+            {
+                accessorKey: 'purchase_date',
+                header: 'Purchase Date',
+                        enableColumnOrdering: false,
+                muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+                    ...getCommonEditTextFieldProps(cell),
+                }),
+                },
 ],
 [getCommonEditTextFieldProps],
 );

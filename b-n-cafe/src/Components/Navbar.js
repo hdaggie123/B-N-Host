@@ -63,8 +63,6 @@ function Navbar() {
                             <i> <ShoppingBasketIcon /> </i>
                             </button>
                     </li>
-
-                  
             </ul>
 
                 {/* {button && <Button buttonStyle='btn--outline'>Account</Button>} */}
@@ -72,6 +70,6 @@ function Navbar() {
         </nav>
         </>
     )
-}
+};
 
 export default Navbar

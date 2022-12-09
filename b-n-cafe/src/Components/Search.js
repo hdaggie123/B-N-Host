@@ -10,7 +10,8 @@ export default function Search() {
                 <div class="search">
                     <input type="text" class="searchTerm" placeholder="Search for a menu item"></input>
                     <button type="submit" className="searchButton">
-                        <i><SearchIcon /></i>
+                        {/* <i><SearchIcon /></i> */}
+                        <i>Search</i>
                     </button>
                 </div>
             </div>

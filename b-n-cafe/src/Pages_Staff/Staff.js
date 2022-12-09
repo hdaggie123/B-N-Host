@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import MaterialReactTable from 'material-react-table';
 import {
 Box,
@@ -14,85 +14,100 @@ TextField,
 Tooltip,
 Checkbox,
 } from '@mui/material';
+import { Delete, Edit } from '@mui/icons-material';
+import './manager.css';
+import axios from 'axios';
+import { resolveBreakpointValues } from '@mui/system/breakpoints';
 
-import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+const api = axios.create({
+    baseURL: 'http://localhost:3001'
+})
 
+const Staff = () => {
+const [createModalOpen, setCreateModalOpen] = useState(false);
+const [data, setData] = useState({});
+const [tableData, setTableData] = useState([]);
 
-export const data = [
-{
-    order_id: '1',
-    itemName: 'Caffe Latte',
-    customizations: '23',
-    min_req: '56',
-},
-{
-    order_id: '2',
-    itemName: 'Caffe Mocha',
-    customizations: '33',
-    min_req: '45',
-
-
-},
-{
-    order_id: '3',
-    itemName: 'White Chocolate Mocha',
-    customizations: '55',
-    min_req: '33',
-
-},
-{
-    order_id: '4',
-    itemName: 'Freshly Brewed Coffee',
-    customizations: '11',
-    min_req: '60',
-},
-{
-    order_id: '5',
-    itemName: 'Cinnamon Dolce Latte',
-    customizations: '30',
-    min_req: '90',
-},
-{
-    order_id: '6',
-    itemName: 'Skinny Vanilla Latte',
-    customizations: '30',
-    min_req: '30',
-},
-{
-    order_id: '7',
-    itemName: 'Caramel Macchiato',
-    customizations: '90',
-    min_req: '90',
-
-},
-{
-    order_id: '8',
-    itemName: 'Caramel Flan Latte',
-    customizations: '40',
-    min_req: '40',
-},
-];
-
-
-const Accounts = () => {
-const [tableData, setTableData] = useState(() => data);
+useEffect(() => {
+    fetch("http://localhost:3001/staff")
+    .then((data) => data.json())
+    .then((data) => setTableData(data))
+}, [])
+console.log(tableData)
 const [validationErrors, setValidationErrors] = useState({});
 
+const handleCreateNewRow = (values) => {
+    api.post("/staff", values)
+    .then(res => {
+        let dataToAdd = [...data];
+        dataToAdd.push(values);
+        setData(dataToAdd);
+        // resolve()
+        // setErrorMessages([])
+        // setIsError(false)
+    })
+    tableData.push(values);
+    setTableData([...tableData]);
+};
 
-const handleCheckRow = useCallback(
+const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
+    api.put("/staff/"+values.staff_id, values)
+        .then(res => {
+            const dataUpdate = [...data];
+            const index = row.tableData.staff_id;
+            dataUpdate[index] = values;
+            setData([...dataUpdate]);
+        })
+if (!Object.keys(validationErrors).length) {
+    tableData[row.index] = values;
+    //send/receive api updates here, then refetch or update local table data for re-render
+    setTableData([...tableData]);
+    exitEditingMode(); //required to exit editing mode and close modal
+}
+};
+
+const handleDeleteRow = 
 (row) => {
+    const id = row.id;
+    console.log(id);
+    api.delete("/staff/"+id)
+    // .then(res => {
+    //     // const dataDelete = [...data];
+    //     // const index = row.tableData.id;
+    //     // dataDelete.splice(index, 1);
+    //     // setData([...dataDelete]);
+    // })
     //send api delete request here, then refetch or update local table data for re-render
     tableData.splice(row.index, 1);
     setTableData([...tableData]);
-},
-[tableData],
-);
+};
+// [tableData],
+// );
 
 const getCommonEditTextFieldProps = useCallback(
 (cell) => {
     return {
     error: !!validationErrors[cell.id],
     helperText: validationErrors[cell.id],
+    onBlur: (event) => {
+        const isValid =
+        cell.column.id === 'minReq'
+            ? validateAge(+event.target.value)
+            : validateRequired(event.target.value);
+        if (!isValid) {
+        //set validation error for cell if invalid
+        setValidationErrors({
+            ...validationErrors,
+            [cell.id]: `${cell.column.columnDef.header} is required`,
+        });
+        } else {
+
+        delete validationErrors[cell.id];
+        setValidationErrors({
+            ...validationErrors,
+        });
+        }
+    },
     };
 },
 [validationErrors],
@@ -101,15 +116,16 @@ const getCommonEditTextFieldProps = useCallback(
 const columns = useMemo(
 () => [
     {
-    accessorKey: 'order_id',
-    header: 'Order Id',
+    accessorKey: 'staff_id',
+    header: 'Staff ID',
     enableColumnOrdering: false,
     enableSorting: false,
+    enableEditing:false,
     size: 80,
     },
     {
-    accessorKey:'itemName',
-    header: 'Item Name',
+    accessorKey:'staff_name',
+    header: 'Staff Name',
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -117,18 +133,10 @@ const columns = useMemo(
     }),
     },
     {
-    accessorKey: 'customizations',
-    header: 'Customizations',
+    accessorKey: 'staff_position',
+    header: 'Staff Position',
     size: 140,
     enableColumnOrdering: false,
-    muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
-        ...getCommonEditTextFieldProps(cell),
-    }),
-    },
-    {
-    accessorKey: 'min_req',
-    header: 'Server',
-            enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
         ...getCommonEditTextFieldProps(cell),
     }),
@@ -139,9 +147,7 @@ const columns = useMemo(
 
 return (
 <>
-
     <MaterialReactTable
-    
     displayColumnDefOptions={{
         'mrt-row-actions': {
         muiTableHeadCellProps: {
@@ -155,33 +161,96 @@ return (
     editingMode="modal" //default
     enableColumnOrdering
     enableEditing
-
+    onEditingRowSave={handleSaveRowEdits}
     renderRowActions={({ row, table }) => (
         <Box 
         display="flex"
         justifyContent="center"
         alignItems="center"
         >
-        <Tooltip arrow placement="right" title="Done">
-            <IconButton color="inherit" onClick={() => handleCheckRow(row)}>
-            <CheckBoxOutlineBlankOutlinedIcon />
+        <Tooltip arrow placement="left" title="Edit">
+            <IconButton onClick={() => table.setEditingRow(row)}>
+            <Edit />
+            </IconButton>
+        </Tooltip>
+        <Tooltip arrow placement="right" title="Delete">
+            <IconButton color="error" onClick={() => handleDeleteRow(row)}>
+            <Delete />
             </IconButton>
         </Tooltip>
         </Box>
     )}
-
     renderTopToolbarCustomActions={() => (
-        <h1
-        color="secondary"
+        <Button
+        color="success"
+        onClick={() => setCreateModalOpen(true)}
         variant="contained"
         >
-        View open Orders Here: 
-        </h1>
+        Add an Item 
+        </Button>
     )}
-
+    />
+    <CreateNewAccountModal
+    columns={columns}
+    open={createModalOpen}
+    onClose={() => setCreateModalOpen(false)}
+    onSubmit={handleCreateNewRow}
     />
 </>
 );
 };
 
-export default Accounts;
+//Accounts of creating a mui dialog modal for creating new rows
+export const CreateNewAccountModal = ({ open, columns, onClose, onSubmit }) => {
+const [values, setValues] = useState(() =>
+columns.reduce((acc, column) => {
+    acc[column.accessorKey ?? ''] = '';
+    return acc;
+}, {}),
+);
+
+const handleSubmit = () => {
+//put your validation logic here
+onSubmit(values);
+onClose();
+};
+
+return (
+<Dialog open={open}>
+    <DialogTitle textAlign="center" >Add a New item </DialogTitle>
+    <DialogContent>
+    <form onSubmit={(e) => e.preventDefault()}>
+        <Stack
+        sx={{
+            width: '100%',
+            minWidth: { xs: '300px', sm: '360px', md: '400px' },
+            gap: '1.5rem',
+        }}
+        >
+        {columns.map((column) => (
+            <TextField
+            key={column.accessorKey}
+            label={column.header}
+            name={column.accessorKey}
+            onChange={(e) =>
+                setValues({ ...values, [e.target.name]: e.target.value })
+            }
+            />
+        ))}
+        </Stack>
+    </form>
+    </DialogContent>
+    <DialogActions sx={{ p: '1.25rem' }}>
+    <Button color="error" onClick={onClose}>Cancel</Button>
+    <Button color="success" onClick={handleSubmit} variant="contained">
+        Add new item
+    </Button>
+    </DialogActions>
+</Dialog>
+);
+};
+
+const validateRequired = (value) => !!value.length;
+const validateAge = (age) => age >= 18 && age <= 50;
+
+export default Staff;
