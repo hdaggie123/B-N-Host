@@ -12,16 +12,24 @@ export default function Login() {
     //Here I will handle manual login entries
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [user, setUser] = useState("");
+    const [luser, setLUser] = useState({});
     const [loginStatus, setLoginStatus] = useState("");
 
 
 
     const handleLogin = async(e) => {
-        useLogin = () => {
+        useEffect = () => {
             fetch("http://localhost:3001/login")
-            .then((user) => user.json())
-            .then((user) => setTableData(user))
+            .then((luser) => user.json())
+            .then((luser) => setLUser(user))
+        }
+
+        //Here I want to check if the user is in the database
+
+        if(username == luser.username && password == luser.password) {
+            alert("You have successfully logged in!");
+        } else {
+            alert("Incorrect username or password");
         }
             
 
