@@ -1,9 +1,9 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-    user: 'csce315_903_matamoros',
+    user: 'csce315_903_demny',
     host: 'csce-315-db.engr.tamu.edu',
     database: 'csce315_903_11',
-    password: 'Mabjmdkt#21',
+    password: '12345',
     port: 5432,
     ssl: {rejectUnauthorized: false}
 })
@@ -135,10 +135,10 @@ const getStaffById = (request, response) => {
 //Method to retrieve login
 
 const getLogin = (request, response) => {
-    const username = (request.params.username).toString();
-    const password = (request.params.password).toString();
-    //const username = request.body.username;
-    //const password = request.body.password;
+    //const username = (request.params.username).toString();
+    //const password = (request.params.password).toString();
+    const username = request.body.username;
+    const password = request.body.password;
     pool.query('SELECT * FROM accounts WHERE username = $1 AND password = $2', [username, password], (error, results) => {
         if (error) {
             results.send(error)

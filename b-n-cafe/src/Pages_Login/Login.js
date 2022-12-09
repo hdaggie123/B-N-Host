@@ -5,12 +5,44 @@ import { Link } from "react-router-dom";
 import './Login.css';
 import {useEffect, useState} from 'react';
 import jwt_decode from 'jwt-decode';
+import axios from 'axios';
 
 export default function Login() {
     //I will be creating a simple login page
     //Here I will handle manual login entries
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, setUser] = useState("");
+    const [loginStatus, setLoginStatus] = useState("");
 
 
+
+    const handleLogin = async(e) => {
+        useLogin = () => {
+            fetch("http://localhost:3001/login")
+            .then((user) => user.json())
+            .then((user) => setTableData(user))
+        }
+            
+
+        e.preventDefault();
+        if(username == "" || password == "") {
+            alert("Please enter a username and password");
+        }
+
+        await axios.get('http://localhost:3001/login', {}, {
+            auth: {
+              username: setUsername,
+              password: setPassword,
+            }
+            }).then((response) => {
+                if(response.data.message) {
+                    setLoginStatus(response.data.message);
+                } else {
+                    setLoginStatus(response.data[0].username);
+                }
+          });
+    }
 
 
 
@@ -32,16 +64,19 @@ export default function Login() {
     }
     useEffect(() => {
         /* global google */
-        google.accounts.id.initialize({client_id: "1037680742660-svicfn8onsq83sqt5bdg7gprr24k18kk.apps.googleusercontent.com", 
-        callback: handleCallbackResponse});
+        // google.accounts.id.initialize({client_id: "1037680742660-svicfn8onsq83sqt5bdg7gprr24k18kk.apps.googleusercontent.com", 
+        // callback: handleCallbackResponse});
 
-        google.accounts.id.renderButton(document.getElementById("my-signin2"), {theme: "outline", size: "large"});
+        // google.accounts.id.renderButton(document.getElementById("my-signin2"), {theme: "outline", size: "large"});
     }, []);
 
+
+
     return (
-        <div class="background wrapper">
-            <div class="header right">
+        <div className="background wrapper">
+            <div className="header right">
                 <h1>Welcome to Barnes and Noble Cafe!</h1>
+                <h2>Login: {loginStatus}</h2>
             </div>
             <div className='logo left'>
                 <img src={require("../Pictures/Starbucks_logo.png")} alt="Starbucks" width="100%" height="100%"/>
@@ -49,24 +84,25 @@ export default function Login() {
             <div>
                     <form className='login_box'>
                         <h2>Sign In</h2>
-                    <div>
-                    <label for="username">Username:  </label>
-                    <input type="text" id="username" name="username" />
-                    </div>
-                    <div>
-                    <label for="password">Password:   </label>
-                    <input type="password" id="password" name="password" />
-                    </div>
-                    <button className='star-sign'>Sign In!</button>
-                    <div id="my-signin2"></div>
-                    {Object.keys(user).length != 0 && <button onClick={(e) =>  handleSignOut(e)}>Sign Out</button>}
-                    {user && <div>{user.name}</div>}
-                    
-                    <div>
-                    <li>
-                        <Link to="/Register">Register Here!!</Link>
-                    </li>
-                    </div>
+                        <div>
+                        <label htmlFor="username">Username:  </label>
+                        <input type="text" onChange={(e) => setUsername(e.target.value)} id="username" required/>
+                        </div>
+                        <div>
+                        <label htmlFor="password">Password:   </label>
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} is="password" required/>
+                        </div>
+                        <button className='star-sign' onClick = {handleLogin}>Sign In!</button>
+                        <div id="my-signin2"></div>
+                        {Object.keys(user).length != 0 && <button onClick={(e) =>  handleSignOut(e)}>Sign Out</button>}
+                        {user && <div>{user.name}</div>}
+                        
+                        <div>
+                        <li>
+                            <Link to="/Register">Register Here!!</Link>
+                        </li>
+                        
+                        </div>
                 </form>
             </div>
         </div>

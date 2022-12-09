@@ -29,6 +29,7 @@ export default function App() {
     }, []);
 
     return (
+        
         <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
@@ -54,4 +55,6 @@ export default function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<App />);
+root.render(
+<App />
+);
