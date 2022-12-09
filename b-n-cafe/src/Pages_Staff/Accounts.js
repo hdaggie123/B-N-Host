@@ -16,8 +16,63 @@ Checkbox,
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import './manager.css';
-import axios from 'axios';
-import { resolveBreakpointValues } from '@mui/system/breakpoints';
+// import { data, states } from './makeData';
+
+
+export const data = [
+{
+    inventrory: '1',
+    itemName: 'Caffe Latte',
+    availability: '23',
+    min_req: '56',
+},
+{
+    inventrory: '2',
+    itemName: 'Caffe Mocha',
+    availability: '33',
+    min_req: '45',
+
+
+},
+{
+    inventrory: '3',
+    itemName: 'White Chocolate Mocha',
+    availability: '55',
+    min_req: '33',
+
+},
+{
+    inventrory: '4',
+    itemName: 'Freshly Brewed Coffee',
+    availability: '11',
+    min_req: '60',
+},
+{
+    inventrory: '5',
+    itemName: 'Cinnamon Dolce Latte',
+    availability: '30',
+    min_req: '90',
+},
+{
+    inventrory: '6',
+    itemName: 'Skinny Vanilla Latte',
+    availability: '30',
+    min_req: '30',
+},
+{
+    inventrory: '7',
+    itemName: 'Caramel Macchiato',
+    availability: '90',
+    min_req: '90',
+
+},
+{
+    inventrory: '8',
+    itemName: 'Caramel Flan Latte',
+    availability: '40',
+    min_req: '40',
+},
+];
 
 const api = axios.create({
     baseURL: 'http://localhost:3001'
@@ -251,7 +306,7 @@ return (
     <DialogActions sx={{ p: '1.25rem' }}>
     <Button color="error" onClick={onClose}>Cancel</Button>
     <Button color="success" onClick={handleSubmit} variant="contained">
-        Add new item
+        Create New Account
     </Button>
     </DialogActions>
 </Dialog>
