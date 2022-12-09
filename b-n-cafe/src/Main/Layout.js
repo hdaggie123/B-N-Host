@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-// import BottomNav from './Pages/bottomNav';
+
 
 const Layout = () => {
     return (
@@ -10,9 +10,9 @@ const Layout = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Menu</Link>
+                        <Link to="/">MenuList</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/SeasonMenu">SeasonMenu</Link>
                     </li>
                     <li>
@@ -23,11 +23,14 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/End">End</Link>
-                    </li>
+                    </li>*/}
                     <li>
                         <Link to="/Login">Login</Link>
                     </li>
                     <li>
+                        <Link to="/Register">Register</Link>
+                    </li>
+                    {/*<li>
                         <Link to="/Accounts">Accounts</Link>
                     </li>
                     <li>
@@ -41,6 +44,7 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/Staff">Staff</Link>
+
                     </li>
                     <li>
                         {/* <Link class = "test" to="/Map">Map</Link> */}
@@ -53,6 +57,7 @@ const Layout = () => {
                     <li>
                         <Link to = "/Translate">Translate</Link>
                     </li>
+
                 </ul>
             </nav>
             <Outlet />

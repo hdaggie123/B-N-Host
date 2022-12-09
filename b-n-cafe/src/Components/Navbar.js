@@ -63,9 +63,12 @@ function Navbar() {
                             <i> <ShoppingBasketIcon /> </i>
                             </button>
                     </li>
-
-                  
-            </ul>
+                    <li className='nav-item'>
+                        <Link to='/login' className='nav-links' onClick={closeMenu}>
+                            Login
+                        </Link>
+                    </li>
+                </ul>
 
                 {/* {button && <Button buttonStyle='btn--outline'>Account</Button>} */}
             </div>
