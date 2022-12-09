@@ -1,5 +1,6 @@
 import {Translator, Translate} from 'react-auto-translate';
 import { useRef } from 'react';
+import './TranslateStyling.css';
 
 
 
@@ -14,40 +15,46 @@ function Translating()  {
     
         // Return the value of the <input> element
         return inputValue;
+      };
+
+    var hello = 'Translate'
+
+    // on button click, get input value
+    var handleClick = () => {
+        const inputValue = getInputValue();
+        hello = inputValue;
+
     };
-
-    var hello = 'hello my name is Adam'
-    var hello = document.getElementById('input').value;
-
-
 
 
     return (
+        
         <Translator
             from="en"
             to="es"
             googleApiKey='AIzaSyDaKqiWtRPw6O0_r212g7Da6TeT10DsJmc'
         >
-
-            {/* create an input box and store the variable */}
-            <input type="text" ref={inputElement} name="input"></input>
-            {/* create a text box and store the info in input element */}
-            <button onClick={getInputValue}>Get Input Value</button>
-            <input type="submit" value="Submit" />
             
-            <input type="text" name="input"></input>
-            {/* create a button */}
-            <button>Get Input Value</button>
-            {/* create a submit button */}
-            <input type="submit" value="Submit" />
+            <h1>Cant Understand a phrase? Type here to translate into Spanish</h1>
+            <div className='TranslateStyling'>
+                <center>
+                    <div>
+                        <input type="text" ref={inputElement} name="input" className='TextInput'></input>
+                        <button onClick={handleClick}>Translate !</button>
+                    </div>
+                </center>
+            </div>
+            
 
-
-
-
-            {/* <Translate>{hello}</Translate> */}
-            <Translate>{hello}</Translate>
-
-
+            <center><h2>Translated Text is as follows</h2></center>
+            <div className='TranslatedText'>
+                <center>
+                    
+                    <Translate>
+                        {hello}
+                    </Translate>
+                </center>
+            </div>
         </Translator>
     );
 }
