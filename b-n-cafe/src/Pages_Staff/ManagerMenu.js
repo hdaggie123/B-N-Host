@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import MaterialReactTable from 'material-react-table';
 import {
 Box,
@@ -15,76 +15,49 @@ Tooltip,
 Checkbox,
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
-// import { data, states } from './makeData';
+import './manager.css';
+import axios from 'axios';
+import { resolveBreakpointValues } from '@mui/system/breakpoints';
 
-
-export const data = [
-{
-    inventrory: '1',
-    itemName: 'Caffe Latte',
-    availability: '23',
-    min_req: '56',
-},
-{
-    inventrory: '2',
-    itemName: 'Caffe Mocha',
-    availability: '33',
-    min_req: '45',
-
-
-},
-{
-    inventrory: '3',
-    itemName: 'White Chocolate Mocha',
-    availability: '55',
-    min_req: '33',
-
-},
-{
-    inventrory: '4',
-    itemName: 'Freshly Brewed Coffee',
-    availability: '11',
-    min_req: '60',
-},
-{
-    inventrory: '5',
-    itemName: 'Cinnamon Dolce Latte',
-    availability: '30',
-    min_req: '90',
-},
-{
-    inventrory: '6',
-    itemName: 'Skinny Vanilla Latte',
-    availability: '30',
-    min_req: '30',
-},
-{
-    inventrory: '7',
-    itemName: 'Caramel Macchiato',
-    availability: '90',
-    min_req: '90',
-
-},
-{
-    inventrory: '8',
-    itemName: 'Caramel Flan Latte',
-    availability: '40',
-    min_req: '40',
-},
-];
-
+const api = axios.create({
+    baseURL: 'http://localhost:3001'
+})
 
 const ManagerMenu = () => {
 const [createModalOpen, setCreateModalOpen] = useState(false);
-const [tableData, setTableData] = useState(() => data);
+const [data, setData] = useState({});
+const [tableData, setTableData] = useState([]);
+
+useEffect(() => {
+    fetch("http://localhost:3001/menu")
+    .then((data) => data.json())
+    .then((data) => setTableData(data))
+}, [])
+console.log(tableData)
 const [validationErrors, setValidationErrors] = useState({});
 
 const handleCreateNewRow = (values) => {
-tableData.push(values);
-setTableData([...tableData]);
+    api.post("/menu", values)
+    .then(res => {
+        let dataToAdd = [...data];
+        dataToAdd.push(values);
+        setData(dataToAdd);
+        // resolve()
+        // setErrorMessages([])
+        // setIsError(false)
+    })
+    tableData.push(values);
+    setTableData([...tableData]);
 };
 
 const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
+    api.put("/menu/"+values.menu_id, values)
+        .then(res => {
+            const dataUpdate = [...data];
+            const index = row.tableData.menu_id;
+            dataUpdate[index] = values;
+            setData([...dataUpdate]);
+        })
 if (!Object.keys(validationErrors).length) {
     tableData[row.index] = values;
     //send/receive api updates here, then refetch or update local table data for re-render
@@ -93,14 +66,23 @@ if (!Object.keys(validationErrors).length) {
 }
 };
 
-const handleDeleteRow = useCallback(
+const handleDeleteRow = 
 (row) => {
+    const id = row.id+1;
+    console.log(id);
+    api.delete("/menu/"+id)
+    // .then(res => {
+    //     // const dataDelete = [...data];
+    //     // const index = row.tableData.id;
+    //     // dataDelete.splice(index, 1);
+    //     // setData([...dataDelete]);
+    // })
     //send api delete request here, then refetch or update local table data for re-render
     tableData.splice(row.index, 1);
     setTableData([...tableData]);
-},
-[tableData],
-);
+};
+// [tableData],
+// );
 
 const getCommonEditTextFieldProps = useCallback(
 (cell) => {
@@ -109,7 +91,7 @@ const getCommonEditTextFieldProps = useCallback(
     helperText: validationErrors[cell.id],
     onBlur: (event) => {
         const isValid =
-        cell.column.id === 'min_req'
+        cell.column.id === 'item_price'
             ? validateAge(+event.target.value)
             : validateRequired(event.target.value);
         if (!isValid) {
@@ -134,16 +116,16 @@ const getCommonEditTextFieldProps = useCallback(
 const columns = useMemo(
 () => [
     {
-    accessorKey: 'inventrory',
-    header: 'Inventrory',
+    accessorKey: 'menu_id',
+    header: 'Menu ID',
     enableColumnOrdering: false,
     enableSorting: false,
     enableEditing:false,
     size: 80,
     },
     {
-    accessorKey:'itemName',
-    header: 'Item Name',
+    accessorKey:'inventory_id',
+    header: 'Inventory ID',
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -151,8 +133,8 @@ const columns = useMemo(
     }),
     },
     {
-    accessorKey: 'availability',
-    header: 'Availability',
+    accessorKey: 'menu_item',
+    header: 'Menu Item',
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -160,13 +142,30 @@ const columns = useMemo(
     }),
     },
     {
-    accessorKey: 'min_req',
-    header: 'Minimim Requirment',
+    accessorKey: 'item_size',
+    header: 'Item Size',
+    size: 140,
             enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
         ...getCommonEditTextFieldProps(cell),
     }),
     },
+    {
+    accessorKey: 'item_price',
+    header: 'Item Price',
+            enableColumnOrdering: false,
+    muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+        ...getCommonEditTextFieldProps(cell),
+    }),
+    },
+    {
+        accessorKey: 'customizations',
+        header: 'Customizations',
+                enableColumnOrdering: false,
+        muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
+            ...getCommonEditTextFieldProps(cell),
+        }),
+        },
 ],
 [getCommonEditTextFieldProps],
 );
@@ -208,7 +207,7 @@ return (
     )}
     renderTopToolbarCustomActions={() => (
         <Button
-        color="secondary"
+        color="success"
         onClick={() => setCreateModalOpen(true)}
         variant="contained"
         >
@@ -243,7 +242,7 @@ onClose();
 
 return (
 <Dialog open={open}>
-    <DialogTitle textAlign="center">Add a new item </DialogTitle>
+    <DialogTitle textAlign="center" >Add a New item </DialogTitle>
     <DialogContent>
     <form onSubmit={(e) => e.preventDefault()}>
         <Stack
@@ -267,9 +266,9 @@ return (
     </form>
     </DialogContent>
     <DialogActions sx={{ p: '1.25rem' }}>
-    <Button onClick={onClose}>Cancel</Button>
-    <Button color="secondary" onClick={handleSubmit} variant="contained">
-        Create New Account
+    <Button color="error" onClick={onClose}>Cancel</Button>
+    <Button color="success" onClick={handleSubmit} variant="contained">
+        Add new item
     </Button>
     </DialogActions>
 </Dialog>

@@ -1,67 +1,24 @@
 import { Outlet, Link } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-
+import ManagerNavBar from "../Pages_Staff/ManagerNavBar";
+// import BottomNav from './Pages/bottomNav';
 
 const Layout = () => {
     return (
         <>
+        <ManagerNavBar />
         <Navbar />
+        {/* <ManagerNavBar /> */}
             <nav>
                 <ul>
-                    <li>
-                        <Link to="/">MenuList</Link>
-                    </li>
                     {/* <li>
-                        <Link to="/SeasonMenu">SeasonMenu</Link>
-                    </li>
-                    <li>
-                        <Link to="/Drink">Drink</Link>
-                    </li>
-                    <li>
-                        <Link to="/Order">Order</Link>
-                    </li>
-                    <li>
-                        <Link to="/End">End</Link>
-                    </li>*/}
-                    <li>
-                        <Link to="/Login">Login</Link>
-                    </li>
-                    <li>
-                        <Link to="/Register">Register</Link>
-                    </li>
-                    {/*<li>
-                        <Link to="/Accounts">Accounts</Link>
-                    </li>
-                    <li>
-                        <Link to="/Inventory">Inventory</Link>
-                    </li>
-                    <li>
-                        <Link to="/ManagerMenu">ManagerMenu</Link>
-                    </li>
-                    <li>
-                        <Link to="/SalesHistory">SalesHistory</Link>
-                    </li>
-                    <li>
-                        <Link to="/Staff">Staff</Link>
-
-                    </li>
-                    <li>
-                        {/* <Link class = "test" to="/Map">Map</Link> */}
-                        {/* center the map item in the middle of the page */}
-                        <Link to="/Map">Map</Link>
-                    </li>
-                    <li>
-                        <Link to="/ManagerNavBar">ManagerNavBar</Link>
-                    </li>
-                    <li>
-                        <Link to = "/Translate">Translate</Link>
-                    </li>
-
+                        <Link to="/">Menu</Link>
+                    </li> */}
                 </ul>
             </nav>
-            <Outlet />
-            <Footer />
+        <Outlet />
+        <Footer />
         </>
     )
 };

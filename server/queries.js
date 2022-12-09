@@ -31,7 +31,7 @@ const getMenuItems = (request, response) => {
 
 const getInventoryItems = (request, response) => {
     const id = parseInt(request.params.id)
-    pool.query('SELECT * FROM inventory ORDER BY inventory_id', (error, results) => {
+    pool.query('SELECT * FROM inventory_temp ORDER BY inventory_id', (error, results) => {
         if (error) {
             throw error
         }
@@ -92,7 +92,7 @@ const getMenuItemById = (request, response) => {
 
 const getInventoryItemById = (request, response) => {
     const id = parseInt(request.params.id)
-    pool.query('SELECT * FROM inventory WHERE inventory_id = $1', [id], (error, results) => {
+    pool.query('SELECT * FROM inventory_temp WHERE inventory_id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -130,6 +130,17 @@ const getStaffById = (request, response) => {
     })
 }
 
+const getLogInByUser = (request, response) => {
+    const username = (request.params.username).toString();
+    const password = (request.params.password).toString();
+    pool.query('SELECT * FROM accounts WHERE username = $1 AND password = $2', [username, password], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.rows)
+    })
+}
+
 // POST
 
 const createAccount = (request, response) => {
@@ -145,9 +156,9 @@ const createAccount = (request, response) => {
 }
 
 const createInventoryItem = (request, response) => {
-    const { inventory_id, inventory_item, inventory_amount, minimum_requirement } = request.body
+    const { inventory_item, inventory_amount, minimum_requirement } = request.body
 
-    pool.query('INSERT INTO inventory (inventory_id, inventory_item, inventory_amount, minimum_requirement) VALUES ($1, $2, $3, $4) RETURNING *', [inventory_id, inventory_item, inventory_amount, minimum_requirement], (error, results) => {
+    pool.query('INSERT INTO inventory_temp (inventory_item, inventory_amount, minimum_requirement) VALUES ($1, $2, $3) RETURNING *', [inventory_item, inventory_amount, minimum_requirement], (error, results) => {
         if (error) {
             throw error
         }
@@ -221,7 +232,7 @@ const updateInventoryItem = (request, response) => {
     const { inventory_item, inventory_amount, minimum_requirement } = request.body
 
     pool.query (
-        'UPDATE inventory SET inventory_item = $1, inventory_amount = $2, minimum_requirement = $3 WHERE inventory_id = $4',
+        'UPDATE inventory_temp SET inventory_item = $1, inventory_amount = $2, minimum_requirement = $3 WHERE inventory_id = $4',
         [inventory_item, inventory_amount, minimum_requirement, inventory_id],
         (error, results) => {
             if (error) {
@@ -311,7 +322,7 @@ const deleteAccount = (request, response) => {
 const deleteInventoryItem = (request, response) => {
     const inventory_id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM inventory WHERE inventory_id = $1', [inventory_id], (error, results) => {
+    pool.query('DELETE FROM inventory_temp WHERE inventory_id = $1', [inventory_id], (error, results) => {
         if (error) {
             throw error
         }
@@ -364,6 +375,8 @@ const deleteStaff = (request, response) => {
 }
 
 module.exports = {
+    getLogInByUser,
+
     getAccounts,
     getAccountById,
     createAccount,

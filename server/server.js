@@ -22,6 +22,9 @@ app.use(
 app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
 })
+
+app.get('/LogIn/:username/:password', db.getLogInByUser)
+
 app.get('/accounts', db.getAccounts)
 app.get('/inventory', db.getInventoryItems)
 app.get('/accounts/:id', db.getAccountById)

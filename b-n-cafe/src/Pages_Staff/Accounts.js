@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import MaterialReactTable from 'material-react-table';
 import {
 Box,
@@ -74,18 +74,45 @@ export const data = [
 },
 ];
 
+const api = axios.create({
+    baseURL: 'http://localhost:3001'
+})
 
 const Accounts = () => {
 const [createModalOpen, setCreateModalOpen] = useState(false);
-const [tableData, setTableData] = useState(() => data);
+const [data, setData] = useState({});
+const [tableData, setTableData] = useState([]);
+
+useEffect(() => {
+    fetch("http://localhost:3001/accounts")
+    .then((data) => data.json())
+    .then((data) => setTableData(data))
+}, [])
+console.log(tableData)
 const [validationErrors, setValidationErrors] = useState({});
 
 const handleCreateNewRow = (values) => {
-tableData.push(values);
-setTableData([...tableData]);
+    api.post("/accounts", values)
+    .then(res => {
+        let dataToAdd = [...data];
+        dataToAdd.push(values);
+        setData(dataToAdd);
+        // resolve()
+        // setErrorMessages([])
+        // setIsError(false)
+    })
+    tableData.push(values);
+    setTableData([...tableData]);
 };
 
 const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
+    api.put("/accounts/"+values.inventory_id, values)
+        .then(res => {
+            const dataUpdate = [...data];
+            const index = row.tableData.inventory_id;
+            dataUpdate[index] = values;
+            setData([...dataUpdate]);
+        })
 if (!Object.keys(validationErrors).length) {
     tableData[row.index] = values;
     //send/receive api updates here, then refetch or update local table data for re-render
@@ -94,14 +121,23 @@ if (!Object.keys(validationErrors).length) {
 }
 };
 
-const handleDeleteRow = useCallback(
+const handleDeleteRow = 
 (row) => {
+    const id = row.id;
+    console.log(id);
+    api.delete("/accounts/"+id)
+    // .then(res => {
+    //     // const dataDelete = [...data];
+    //     // const index = row.tableData.id;
+    //     // dataDelete.splice(index, 1);
+    //     // setData([...dataDelete]);
+    // })
     //send api delete request here, then refetch or update local table data for re-render
     tableData.splice(row.index, 1);
     setTableData([...tableData]);
-},
-[tableData],
-);
+};
+// [tableData],
+// );
 
 const getCommonEditTextFieldProps = useCallback(
 (cell) => {
@@ -110,7 +146,7 @@ const getCommonEditTextFieldProps = useCallback(
     helperText: validationErrors[cell.id],
     onBlur: (event) => {
         const isValid =
-        cell.column.id === 'min_req'
+        cell.column.id === 'minReq'
             ? validateAge(+event.target.value)
             : validateRequired(event.target.value);
         if (!isValid) {
@@ -135,16 +171,16 @@ const getCommonEditTextFieldProps = useCallback(
 const columns = useMemo(
 () => [
     {
-    accessorKey: 'inventrory',
-    header: 'Inventrory',
+    accessorKey: 'id',
+    header: 'Account ID',
     enableColumnOrdering: false,
     enableSorting: false,
     enableEditing:false,
     size: 80,
     },
     {
-    accessorKey:'itemName',
-    header: 'Item Name',
+    accessorKey:'username',
+    header: 'Username',
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -152,8 +188,8 @@ const columns = useMemo(
     }),
     },
     {
-    accessorKey: 'availability',
-    header: 'Availability',
+    accessorKey: 'password',
+    header: 'Password',
     size: 140,
     enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
@@ -161,8 +197,8 @@ const columns = useMemo(
     }),
     },
     {
-    accessorKey: 'min_req',
-    header: 'Minimim Requirment',
+    accessorKey: 'classification',
+    header: 'Classification',
             enableColumnOrdering: false,
     muiTableBodyCellEditTextFieldProps: ({ cell }) => ({
         ...getCommonEditTextFieldProps(cell),

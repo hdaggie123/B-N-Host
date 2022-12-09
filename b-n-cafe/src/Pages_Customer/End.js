@@ -13,19 +13,19 @@ const End = () => {
             <div class="col-6"><img src={logoImg} alt=""/></div>
         </div>
 
-        <div class="row">
+        {/* <div class="row">
             <div class="col-6">
                 <div className="menu-title">
                     Order Number: #1
                 </div>
             </div>
-        </div>
+        </div> */}
 
         <div class="row">
             <div class="col-6">
                 <div className="end-text">
                     We are making your order. 
-                    We will call your order number when your order is ready.
+                    We will let you know when your order is ready.
                     Thank you for shopping at Barnes and Nobles!
                 </div>
             </div>
