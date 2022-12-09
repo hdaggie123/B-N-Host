@@ -44,7 +44,20 @@ const Layout = () => {
                     </li>
                     <li>
                         <Link to="/Staff">Staff</Link>
-                    </li>*/}
+
+                    </li>
+                    <li>
+                        {/* <Link class = "test" to="/Map">Map</Link> */}
+                        {/* center the map item in the middle of the page */}
+                        <Link to="/Map">Map</Link>
+                    </li>
+                    <li>
+                        <Link to="/ManagerNavBar">ManagerNavBar</Link>
+                    </li>
+                    <li>
+                        <Link to = "/Translate">Translate</Link>
+                    </li>
+
                 </ul>
             </nav>
             <Outlet />

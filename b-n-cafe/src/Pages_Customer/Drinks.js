@@ -3,6 +3,7 @@ import '../Main/App.css';
 import Item from './Item';
 import './Menu.css';
 import logoImg from '../Pictures/barnes&nobleLogo.jpg';
+import Translate from '../Components/Translate';
 
 function itemValues(item) {
     const itemName = item.name;
@@ -15,6 +16,7 @@ const Drink = () => {
     return (
         <>
         {/* #1 - LOGO HERE */}
+
         <div class="row">
             <div class="col-6"><img src={logoImg} alt=""/></div>
         </div>
@@ -58,10 +60,13 @@ const Drink = () => {
                 <Item name="Add to Order" price="$2.00"/>
             </div>
         </div>
+        <Translate />
 
         <section className="menu-items">
         </section>
         </>
+
+
     );
 };
 
