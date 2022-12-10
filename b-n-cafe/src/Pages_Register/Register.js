@@ -1,5 +1,5 @@
 import react from 'react';
-// import './Register.css';
+import './Register.css';
 import {useState} from 'react';
 import axios from 'axios';
 //here I am creating a basic registration page
@@ -12,7 +12,6 @@ function Register() {
 
     const register = () => {
         axios.post("http://localhost:3001/accounts", {
-            id: 200,
             username: usernameReg,
             password: passwordReg,
             classification: roleReg,
@@ -35,7 +34,7 @@ function Register() {
                 </label>
                 <label>
                     Role:
-                    <select type = "text" onChange={(e) => setRoleReg(e.target.value)}>
+                    <select type = "text" onChange={(e) => setRoleReg(e.target.value)} name="classification">
                         <option value="customer">Customer</option>
                         <option value="manager">Manager</option>
                         <option value="staff">Staff</option>

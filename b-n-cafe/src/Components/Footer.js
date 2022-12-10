@@ -32,7 +32,7 @@ function Navbar() {
 
                     <li className='footer-item'>
                         {/* add an icon here */}
-                    <button className="find-us-button"><Link to='/location' className='nav-links' onClick={closeMenu}>
+                    <button className="find-us-button"><Link to='/Translate' className='nav-links' onClick={closeMenu}>
                             Translate
                         </Link>
                         <i> <LanguageIcon /> </i>
