@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { Link } from "react-router-dom";
 import './Login.css';
 //import {useEffect, useState} from 'react';
-import jwt_decode from 'jwt-decode';
+//import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 
 const api = axios.create({
@@ -59,10 +59,11 @@ export default function Login() {
 
     function handleCallbackResponse(response) {
         console.log("Encoded JWT ID Token: " + response.credential);
-        var decoded = jwt_decode(response.credential);
-        console.log( decoded);
+        //var decoded = jwt_decode(response.credential);
+        var token = response.credential;
+        console.log( token);
 
-        setUser(decoded);
+        setUser(token);
         document.getElementById("my-signin2").hidden = true;
     }
 
