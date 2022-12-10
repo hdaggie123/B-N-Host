@@ -4,6 +4,8 @@ const app = express()
 const db = require('./queries')
 const port = 3001
 
+const cors = require('cors')
+
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -11,6 +13,12 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
     });
+    const corsOptions ={
+        origin:'http://localhost:3000', 
+        credentials:true,            //access-control-allow-credentials:true
+        optionSuccessStatus:200
+    }
+    app.use(cors(corsOptions));
 
 app.use(bodyParser.json())
 app.use(
@@ -23,7 +31,7 @@ app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API' })
 })
 
-app.get('/LogIn/:username/:password', db.getLogInByUser)
+app.post('/LogIn/:username/:password', db.getLogInByUser)
 
 app.get('/accounts', db.getAccounts)
 app.get('/inventory', db.getInventoryItems)

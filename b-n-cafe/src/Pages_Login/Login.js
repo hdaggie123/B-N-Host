@@ -5,12 +5,43 @@ import { Link } from "react-router-dom";
 import './Login.css';
 import {useEffect, useState} from 'react';
 import jwt_decode from 'jwt-decode';
+import axios from 'axios';
 
 export default function Login() {
     //I will be creating a simple login page
     //Here I will handle manual login entries
-    const [usernameReg, setUsernameReg] = useState("");
-    const [passwordReg, setPasswordReg] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [luser, setLUser] = useState({});
+    const [loginStatus, setLoginStatus] = useState("");
+
+
+
+    const handleLogin = async(e) => {
+        useEffect = () => {
+            fetch("http://localhost:3001/login")
+            .then((luser) => user.json())
+            .then((luser) => setLUser(user))
+        }
+
+        //Here I want to check if the user is in the database
+            
+
+        e.preventDefault();
+
+        await axios.get('http://localhost:3001/LogIn', {}, {
+            auth: {
+              username: setUsername,
+              password: setPassword,
+            }
+            }).then((response) => {
+                if(response.data.message) {
+                    setLoginStatus(response.data.message);
+                } else {
+                    setLoginStatus(response.data[0].username);
+                }
+          });
+    }
     //All of the code below is for the google sign in button
     const [user, setUser] = useState({});
 
@@ -36,20 +67,20 @@ export default function Login() {
     }, []);
 
     return (
-        <div class="background wrapper">
+        <div className="background wrapper">
             <div className='logo left'>
                 <img src={require("../Pictures/barnes&nobleLogo.jpg")} alt="Starbucks" width="100%" />
             </div>
             <div className='login_box'>
-                <form>
+                <form onSubmit={handleLogin}>
                     <h2>Sign In</h2>
                     <div className="sign-input"> {/* added  */}
-                        <label for="username">Username:  </label>
-                        <input type="text" placeholder="enter email or user name" id="username" name="username" />
+                        <label htmlFor="username">Username:  </label>
+                        <input type="text" placeholder="enter email or user name" id="username" required />
                     </div>
                     <div className="sign-input">
-                        <label for="password">Password:   </label>
-                        <input type="password" placeholder="enter password"  id="password" name="password" />
+                        <label htmlFor="password">Password:   </label>
+                        <input type="password" placeholder="enter password"  id="password" required />
                     </div>
                     <div className="sign-input">
                         <button className='star-sign'>Sign In!</button>
@@ -58,7 +89,7 @@ export default function Login() {
                         {user && <div>{user.name}</div>}
                         
                       
-                        <label for="username">Don't have an account</label>
+                        <label htmlFor="username">Don't have an account?</label>
                         <button className='star-sign'>
                         <li>
                             <Link to="/Register">Register Here!!</Link>
