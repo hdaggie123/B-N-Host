@@ -12,6 +12,16 @@ app.use(function (req, res, next) {
     next();
     });
 
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
+
+app.use(cors())
+
 app.use(bodyParser.json())
 app.use(
     bodyParser.urlencoded({
