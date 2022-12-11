@@ -20,7 +20,7 @@ import axios from 'axios';
 import { resolveBreakpointValues } from '@mui/system/breakpoints';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3001'
+    baseURL: 'https://barnesandnoblecsce315-backend.onrender.com'
 })
 
 const Inventory = () => {
@@ -29,7 +29,7 @@ const [data, setData] = useState({});
 const [tableData, setTableData] = useState([]);
 
 useEffect(() => {
-    fetch("http://localhost:3001/inventory")
+    fetch("https://barnesandnoblecsce315-backend.onrender.com/inventory")
     .then((data) => data.json())
     .then((data) => setTableData(data))
 }, [])
