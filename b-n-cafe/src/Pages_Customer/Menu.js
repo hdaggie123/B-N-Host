@@ -15,7 +15,7 @@ import useLocalStorage from '../Components/useLocalStorage';
 import { Key } from '@mui/icons-material';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3001'
+    baseURL: 'https://barnesandnoblecsce315-backend.onrender.com'
 })
 
 const item = {
@@ -111,7 +111,7 @@ const Menu = (props) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/menu")
+        fetch("https://barnesandnoblecsce315-backend.onrender.com/menu")
         .then((data) => data.json())
         .then((data) => setData(data))
     }, [])
