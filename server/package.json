@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build" : "webpack --config webpack.config.js" 
+    "build" : "node" 
   },
   "name": "server",
   "version": "1.0.0",
