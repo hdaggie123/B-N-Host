@@ -8,7 +8,8 @@ export default function Search() {
         <div>
             <div class="wrap">
                 <div class="search">
-                    <input type="text" class="searchTerm" placeholder="Search for a menu item"></input>
+                    <label htmlFor="Search">Search Here</label>
+                    <input id = "Search" type="text" class="searchTerm" placeholder="Search for a menu item"></input>
                     <button type="submit" className="searchButton">
                         {/* <i><SearchIcon /></i> */}
                         <i>Search</i>

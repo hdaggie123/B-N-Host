@@ -8,7 +8,8 @@
     "pg-promise": "^10.15.4"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build" : "node" 
   },
   "name": "server",
   "version": "1.0.0",
