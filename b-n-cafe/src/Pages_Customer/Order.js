@@ -8,7 +8,7 @@ import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3001/openOrders'
+    baseURL: 'https://barnesandnoblecsce315-backend.onrender.com/openOrders'
 })
 
 function sum(a, b) {
@@ -36,7 +36,7 @@ function Order () {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/openOrders")
+        fetch("https://barnesandnoblecsce315-backend.onrender.com/openOrders")
         .then((data) => data.json())
         .then((data) => setData(data))
     }, [])

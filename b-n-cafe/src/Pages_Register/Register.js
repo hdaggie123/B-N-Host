@@ -11,7 +11,7 @@ function Register() {
     const [roleReg, setRoleReg] = useState("");
 
     const register = () => {
-        axios.post("http://localhost:3001/accounts", {
+        axios.post("https://barnesandnoblecsce315-backend.onrender.com/accounts", {
             username: usernameReg,
             password: passwordReg,
             classification: roleReg,

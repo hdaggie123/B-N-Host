@@ -7,7 +7,7 @@ export default class MenuList extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:3001/menu/1")
+        axios.get("https://barnesandnoblecsce315-backend.onrender.com/menu/1")
             .then(res => {
                 const items = res.data;
                 this.setState({ items });

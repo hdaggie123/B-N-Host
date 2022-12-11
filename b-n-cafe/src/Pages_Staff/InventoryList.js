@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:3001/inventory'
+    baseURL: 'https://barnesandnoblecsce315-backend.onrender.com/inventory'
 })
 
 export default class InventoryList extends Component {
