@@ -8,7 +8,7 @@ import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://barnesandnoblecsce315-backend.onrender.com/openOrders'
+    baseURL: 'https://barnesandnoblecsce315-backend.onrender.com'
 })
 
 function sum(a, b) {
