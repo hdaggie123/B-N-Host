@@ -14,7 +14,7 @@ app.use(function (req, res, next) {
     });
 
 const corsOptions ={
-    origin:'http://localhost:3000', 
+    origin:'http://barnesandnoblecsce315-frontend.onrender.com/', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
