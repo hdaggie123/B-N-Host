@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://barnesandnoblecsce315-backend.onrender.com/",
   "eslintConfig": {
     "extends": [
       "react-app",
