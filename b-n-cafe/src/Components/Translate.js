@@ -26,7 +26,7 @@ function Translating()  {
         <Translator
             from="en"
             to="es"
-            googleApiKey='AIzaSyDaKqiWtRPw6O0_r212g7Da6TeT10DsJmc'
+            googleApiKey=''
         >
 
             {/* create an input box and store the variable */}
